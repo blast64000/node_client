@@ -1,7 +1,7 @@
 const axios = require('axios')
 
 axios
-    .post('https://apis.worksmobile.com/kr1unqNPDxwAo/message/v1/bot', {
+    .post('https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot', {
         headers: {
             'Content-Type': 'application/json',
             'consumerKey': 'BHOjH7zxMnPPqXwycpf8',
