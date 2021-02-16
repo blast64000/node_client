@@ -8,7 +8,7 @@ const data = JSON.stringify({
 })
 
 const options = {
-    hostname: 'https://sandbox-apis.worksmobile.com',
+    hostname: 'https://apis.worksmobile.com',
     port: 443,
     path: '/kr1unqNPDxwAo/message/v1/bot',
     method: 'POST',
