@@ -24,6 +24,9 @@ axios
 .then(res => {
         console.log(`statusCode: ${res.statusCode}`)
         console.log(res)
+        console.log(res.data)
+
+        print()
     })
     .catch(error => {
         console.error(error)
