@@ -26,7 +26,6 @@ axios
         console.log(res)
         console.log(res.data)
 
-        print()
     })
     .catch(error => {
         console.error(error)
