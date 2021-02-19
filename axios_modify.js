@@ -19,7 +19,7 @@ axios
             },
 
             params: {
-                botNo = '1909195'
+                botNo = 1909195
             },
 
         })
