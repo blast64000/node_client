@@ -10,6 +10,10 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
+    res.status(200).json(
+
+        { "success": true }
+    )
     console.log(req)
     console.log(res)
 });
