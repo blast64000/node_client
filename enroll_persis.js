@@ -8,22 +8,22 @@ axios
                 "actions": [{
                         "type": "uri",
                         "label": "label test-01",
-                        "url": "test-01"
+                        "uri": "test-01"
                     },
                     {
                         "type": "uri",
                         "label": "label test-02",
-                        "url": "test-02"
+                        "uri": "test-02"
                     },
                     {
                         "type": "uri",
                         "label": "label test-03",
-                        "url": "test-03"
+                        "uri": "test-03"
                     },
                     {
                         "type": "uri",
                         "label": "label test-04",
-                        "url": "test-04"
+                        "uri": "test-04"
                     }
 
                 ]
