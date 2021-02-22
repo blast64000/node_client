@@ -6,28 +6,24 @@ axios
         {
             "content": {
                 "actions": [{
-                        "type": "postback",
+                        "type": "uri",
                         "label": "label test-01",
-                        "data": "action=buy&itemid=111",
-                        "displayText": "send user reply text-01"
+                        "url": "test-01"
                     },
                     {
-                        "type": "postback",
+                        "type": "uri",
                         "label": "label test-02",
-                        "data": "action=buy&itemid=112",
-                        "displayText": "send user reply text-02"
+                        "url": "test-02"
                     },
                     {
-                        "type": "postback",
+                        "type": "uri",
                         "label": "label test-03",
-                        "data": "action=buy&itemid=113",
-                        "displayText": "send user reply text-03"
+                        "url": "test-03"
                     },
                     {
-                        "type": "postback",
-                        "label": "label test",
-                        "data": "action=buy&itemid=114",
-                        "displayText": "send user reply text-04"
+                        "type": "uri",
+                        "label": "label test-04",
+                        "url": "test-04"
                     }
 
                 ]
