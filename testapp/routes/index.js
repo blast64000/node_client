@@ -3,16 +3,15 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.status(404).json(
-    "success":true
-  )
+    res.status(200).json(
 
+        { "success": true }
+    )
 });
 
-router.post('/',function(req,res,next){
-
-
-
+router.post('/', function(req, res, next) {
+    console.log(req)
+    console.log(res)
 });
 
 module.exports = router;
