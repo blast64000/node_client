@@ -24,7 +24,7 @@ axios
 .then(res => {
         console.log(`statusCode: ${res.statusCode}`)
         console.log(res)
-        console.log(res.data)
+        console.log(res.actions)
 
     })
     .catch(error => {
