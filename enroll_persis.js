@@ -1,32 +1,19 @@
 const axios = require('axios')
 
 axios
-    .post('https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1909195/persistentmenu',
+    .post('https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/persistentmenu',
 
         {
             "content": {
                 "actions": [{
-                        "type": "uri",
-                        "label": "label test-01",
-                        "uri": "test-01"
-                    },
-                    {
-                        "type": "uri",
-                        "label": "label test-02",
-                        "uri": "test-02"
-                    },
-                    {
-                        "type": "uri",
-                        "label": "label test-03",
-                        "uri": "test-03"
-                    },
-                    {
-                        "type": "uri",
-                        "label": "label test-04",
-                        "uri": "test-04"
-                    }
-
-                ]
+                    "type": "uri",
+                    "label": "WorksMobile's Homepage",
+                    "uri": "https://line.worksmobile.com"
+                }, {
+                    "type": "message",
+                    "label": "FAQ",
+                    "postback": "PersistentMenu_FAQ"
+                }]
             }
 
         },
