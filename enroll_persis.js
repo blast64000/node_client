@@ -7,7 +7,7 @@ axios
             "content": {
                 "actions": [{
                     "type": "uri",
-                    "label": "WorksMobile's Homepage",
+                    "label": "Homepage",
                     "uri": "https://line.worksmobile.com"
                 }, {
                     "type": "message",
