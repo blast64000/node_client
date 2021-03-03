@@ -7,11 +7,12 @@
 var app = require('../app');
 var debug = require('debug')('testapp:server');
 var http = require('http');
-
 const https = require('https');
 const fs = require('fs');
 const sport = normalizePort(process.env.PORT || '443');
-
+/*
+const httpport = normalizePort(process.env.PORT || '80');
+*/
 const options = {
     key: fs.readFileSync('/etc/letsencrypt/archive/herb-cookie.com/privkey1.pem'),
     cert: fs.readFileSync('/etc/letsencrypt/archive/herb-cookie.com/cert1.pem'),
@@ -63,6 +64,9 @@ function normalizePort(val) {
  */
 
 function onError(error) {
+
+    var port = "80"
+
     if (error.syscall !== 'listen') {
         throw error;
     }
