@@ -13,9 +13,9 @@ const fs = require('fs');
 const sport = normalizePort(process.env.PORT || '443');
 
 const options = {
-    key: fs.readFileSync('/etc/letsencrypt/live/herb-cookie.com/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/herb-cookie.com/cert.pem'),
-    ca: fs.readFileSync('/etc/letsencrypt/live/herb-cookie.com/chain.pem')
+    key: fs.readFileSync('/etc/letsencrypt/archive/herb-cookie.com/privkey1.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/archive/herb-cookie.com/cert1.pem'),
+    ca: fs.readFileSync('/etc/letsencrypt/archive/herb-cookie.com/chain1.pem')
 };
 
 /**
