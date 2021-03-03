@@ -1,0 +1,8 @@
+https://drive.google.com/file/d/1c-ZScGjGFTnKmHDBYHhDr-2Ch70ZGTyY
+https://drive.google.com/file/d/12tQeNusiLxjwWofNSHQnVXX-ePNGbRQs/view?usp=sharing
+
+ wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=12tQeNusiLxjwWofNSHQnVXX-ePNGbRQs' -O rich_menu.png
+
+
+[이미지]
+XAAAUFu0VclmHteAMq0SJrW1/4DBkYiobjWh9Hijhg1FJKP9rlOMqUr0APiEcWucIIcMuVN1z6fuo72wL+xCRNu/iLHG/3fGYJuO+d62TJwb61cq

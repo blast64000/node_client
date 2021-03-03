@@ -13,9 +13,9 @@ const fs = require('fs');
 const sport = normalizePort(process.env.PORT || '443');
 
 const options = {
-    key: fs.readFileSync(__dirname + '/인증서경로/domain_xxxxx.key.pem'),
-    cert: fs.readFileSync(__dirname + '/인증서경로/domain_xxxxx.crt.pem'),
-    ca: fs.readFileSync(__dirname + '/인증서경로/ca-chain-bundle.pem')
+    key: fs.readFileSync(__dirname + '/etc/letsencrypt/live/herb-cookie.com/privkey.pem'),
+    cert: fs.readFileSync(__dirname + '/etc/letsencrypt/live/herb-cookie.com/cert.pem'),
+    ca: fs.readFileSync(__dirname + '/etc/letsencrypt/live/herb-cookie.com/chain.pem')
 };
 
 /**
