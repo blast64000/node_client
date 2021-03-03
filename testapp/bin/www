@@ -15,11 +15,11 @@ const options = {
 };
 
 const app = express();
-app.set('port', sport);
-
 
 http.createServer(app).listen(80);
 https.createServer(options, app).listen(443);
+
+
 /**
  * Create HTTP server.
  */
