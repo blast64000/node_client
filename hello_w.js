@@ -7,6 +7,6 @@ http.createServer(function(req, res) {
 
     res.end("hello world!\n");
 
-}).listen(3000);
+}).listen(80);
 
 console.log('Server running on 3000');
