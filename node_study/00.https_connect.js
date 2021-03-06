@@ -1,7 +1,7 @@
 
 
 var fs = require("fs")
-var https = requrie("https");
+var https = require("https");
 
 var options = {
     key: fs.readFileSync('/etc/letsencrypt/archive/herb-cookie.com/privkey1.pem'),
