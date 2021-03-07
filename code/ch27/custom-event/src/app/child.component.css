@@ -1,0 +1,12 @@
+button {
+  font-size: 1rem;
+  color: red;
+  border: 3px ridge red; padding: 20px;
+}
+
+button:active {
+  font-size: 1rem;
+  color: white;
+  background-color: red;
+  border: 3px ridge gray; padding: 20px;
+}
