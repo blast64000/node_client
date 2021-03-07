@@ -13,6 +13,12 @@ https.createServer(options, function(req, res) {
         console.log(chunk)
         jsonData += chunk;
     });
+
+    res.writeHead(200);
+    res.end();
+
+
+
 /*
     req.on('end', function() {
         var reqObj = JSON.parse(jsonData);
