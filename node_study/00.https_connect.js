@@ -10,6 +10,7 @@ var options = {
 https.createServer(options, function(req, res) {
     var jsonData = "";
     req.on('data', function(chunk) {
+        console.log(chunk)
         jsonData += chunk;
     });
 
