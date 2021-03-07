@@ -1,5 +1,3 @@
-
-
 var fs = require("fs")
 var https = require("https");
 
@@ -9,8 +7,19 @@ var options = {
     ca: fs.readFileSync('/etc/letsencrypt/archive/herb-cookie.com/chain1.pem')
 };
 
-https.createServer(options, function(req, res){
-    res.writeHead(200);
-    res.end("hello secure world\n");
+https.createServer(options, function(req, res) {
+    var jsonData = "";
+    req.on('data', function(chunk) {
+        jsonData += chunk;
+    });
 
+    req.on('end', function() {
+        var reqObj = JSON.parse(jsonData);
+        var resObj = {
+            message: "Hello" + reqObj.name,
+            question: "Are you a good" + reqObj.occupation + "?"
+        };
+        res.writeHead(200);
+        res.end(JSON.stringify(resObj));
+    });
 }).listen(443);
