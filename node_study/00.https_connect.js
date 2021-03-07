@@ -8,28 +8,13 @@ var options = {
 };
 
 https.createServer(options, function(req, res) {
-    var jsonData = "";
-    req.on('data', function(chunk) {
-        console.log(chunk)
-        jsonData += chunk;
-    });
+    let body = [];
 
-    res.writeHead(200);
-    res.end();
-
-
-
-/*
-    req.on('end', function() {
-        var reqObj = JSON.parse(jsonData);
-        var resObj = {
-            message: "Hello" + reqObj.name,
-            question: "Are you a good" + reqObj.occupation + "?"
-        };
-        res.writeHead(200);
-        res.end(JSON.stringify(resObj));
-    });
-*/
-
-
+    request.on('data', (chunk) => {
+    body.push(chunk);
+    console.log(chunk)
+  }).on('end', () => {
+    body = Buffer.concat(body).toString();
+    response.end(body);
+  });
 }).listen(443);
