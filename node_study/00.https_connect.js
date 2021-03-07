@@ -12,9 +12,12 @@ https.createServer(options, function(req, res) {
 
     req.on('data', (chunk) => {
     body.push(chunk);
-    console.log(chunk)
+    console.log("here?")
   }).on('end', () => {
     body = Buffer.concat(body).toString();
     res.end(body);
   });
 }).listen(443);
+
+console.log(chunk)
+console.log("where?")
