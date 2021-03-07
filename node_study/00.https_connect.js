@@ -10,11 +10,11 @@ var options = {
 https.createServer(options, function(req, res) {
     let body = [];
 
-    request.on('data', (chunk) => {
+    req.on('data', (chunk) => {
     body.push(chunk);
     console.log(chunk)
   }).on('end', () => {
     body = Buffer.concat(body).toString();
-    response.end(body);
+    res.end(body);
   });
 }).listen(443);
