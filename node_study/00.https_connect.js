@@ -7,17 +7,13 @@ var options = {
     ca: fs.readFileSync('/etc/letsencrypt/archive/herb-cookie.com/chain1.pem')
 };
 
-https.createServer(options, function(req, res) {
-    let body = [];
+function onRequest(request, response) {
+    console.log('request received.');
+    response.writeHead(200, {'Content-Type' : 'text/plain'});
+    response.write('Hello World');
+    response.end();
+}
 
-    req.on('data', (chunk) => {
-    body.push(chunk);
-    console.log("here?")
-  }).on('end', () => {
-    body = Buffer.concat(body).toString();
-    res.end(body);
-  });
-}).listen(443);
+https.createServer(options, onRequest).listen(443);
 
-console.log(chunk)
-console.log("where?")
+console.log('server has started.');
