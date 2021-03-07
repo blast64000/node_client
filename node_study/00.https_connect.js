@@ -21,9 +21,13 @@ function onRequest(request, response) {
       body.push(chunk);
     }).on('end', () => {
       body = Buffer.concat(body).toString();  
+      console.log('========= headers ========.');
       console.log(headers)
+      console.log('========= moethod ========.');
       console.log(method)
+      console.log('========= url ========.');
       console.log(url)
+      console.log('========= body ========.');
       console.log(body)
     
     });
