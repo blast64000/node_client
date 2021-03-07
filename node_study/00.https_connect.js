@@ -8,7 +8,29 @@ var options = {
 };
 
 function onRequest(request, response) {
+
+
+    /* request part*/
     console.log('request received.');
+    const { headers, method, url } = request;
+    let body = [];
+
+    request.on('error', (err) => {
+      console.error(err);
+    }).on('data', (chunk) => {
+      body.push(chunk);
+    }).on('end', () => {
+      body = Buffer.concat(body).toString();  
+      console.log(headers)
+      console.log(method)
+      console.log(url)
+      console.log(body)
+    
+    });
+
+
+
+
     response.writeHead(200, {'Content-Type' : 'text/plain'});
     response.write('Hello World');
     response.end();
