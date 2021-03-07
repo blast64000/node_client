@@ -13,7 +13,7 @@ https.createServer(options, function(req, res) {
         console.log(chunk)
         jsonData += chunk;
     });
-
+/*
     req.on('end', function() {
         var reqObj = JSON.parse(jsonData);
         var resObj = {
@@ -23,4 +23,7 @@ https.createServer(options, function(req, res) {
         res.writeHead(200);
         res.end(JSON.stringify(resObj));
     });
+*/
+
+
 }).listen(443);
