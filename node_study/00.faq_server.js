@@ -50,6 +50,7 @@ function onRequest(req, res) {
                     type: parsedBody.content.type,
                     text: parsedBody.content.text
                 },
+                postback:""
             }
             
 
@@ -67,6 +68,7 @@ function onRequest(req, res) {
                 
                 var reqBody = {
                     accountId: parsedBody.source.accountId,
+                    postback:"",
                     content: {
                         type: 'button_template',
                         contentText: 'what do you want?',
@@ -87,7 +89,7 @@ function onRequest(req, res) {
                     }
                 }
             }
-            else if (reqBody.content.text==='복지00'){
+            else if (reqBody.content.postback==='복지00'){
                 var reqBody = {
                     accountId: parsedBody.source.accountId,
                     content: {
