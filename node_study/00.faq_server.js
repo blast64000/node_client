@@ -91,7 +91,6 @@ function onRequest(req, res) {
                 }
             }
             else if (reqBody.content.postback==='복지00'){
-                console.log("enter postpack option")
                 var reqBody = {
                     accountId: parsedBody.source.accountId,
                     content: {
@@ -100,7 +99,7 @@ function onRequest(req, res) {
                         actions: [{
                             "type": "message",
                             "label": "학자금지원",
-                            "postback": "인사"
+                            "postback": "복지01"
                           }, {
                             "type": "message",
                             "label": "경조사",
@@ -121,6 +120,10 @@ function onRequest(req, res) {
                         ]
                     }
                 }
+            }
+            else if (reqBody.content.postback==='복지01'){
+                reqBody.content.text = '학자금 지원은 직원 및 자녀의 학자금을 지원하며 발생 연도내 지원이 원칙입니다';
+                url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push';
             }
 
 
