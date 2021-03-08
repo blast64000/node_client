@@ -22,7 +22,7 @@ function callback(error, response, body) {
 
     console.log("★parse functions")
     const info = JSON.parse(body);
-    console.log(info.actions);
+    console.log(info);
 }
 
 request(options, callback);
