@@ -1,5 +1,6 @@
 var fs = require("fs")
 var https = require("https");
+var url_link = '';
 const request = require('../testapp/node_modules/request');
 
 const options = {
@@ -50,7 +51,7 @@ function onRequest(req, res) {
                     text: parsedBody.content.text
                 },
             }
-            var url_link = '';
+            
 
             if (reqBody.content.text==='시작00'){
                 reqBody.content.text = '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다.';
