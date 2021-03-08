@@ -21,7 +21,7 @@ function callback(error, response, body) {
 
 
     console.log("★parse functions")
-    const info = JSON.parse(body);
+    const info = JSON.parse(body.content.actions);
     console.log(info);
 }
 
