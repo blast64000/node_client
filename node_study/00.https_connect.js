@@ -2,8 +2,6 @@ var fs = require("fs")
 var https = require("https");
 const request = require('../testapp/node_modules/request');
 
-
-
 const options = {
     url: 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/persistentmenu',
     push_url: 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push',
@@ -39,11 +37,6 @@ function onRequest(request, response) {
         console.log('========= body ========.');
         console.log(body)
     });
-
-    const info = JSON.parse(body);
-    console.log(info.content);
-
-
 
 }
 https.createServer(options, onRequest).listen(443);
