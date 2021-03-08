@@ -37,9 +37,11 @@ function onRequest(req, res) {
         console.log(body)
 
 
-
-
         var parsedBody = JSON.parse(body);
+
+        // if 메세지가 뭐일경우 
+        //content 바꾸기 
+
         var reqBody = {
             accountId: parsedBody.source.accountId,
             content: parsedBody.content
