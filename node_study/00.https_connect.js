@@ -9,7 +9,6 @@ var options = {
 
 function onRequest(request, response) {
     /* request part*/
-    console.log('request received.');
     const { headers, method, url } = request;
     let body = [];
 
@@ -18,6 +17,7 @@ function onRequest(request, response) {
     }).on('data', (chunk) => {
         body.push(chunk);
     }).on('end', () => {
+        console.log('request received.');
         body = Buffer.concat(body).toString();
         console.log('========= headers ========.');
         console.log(headers)
@@ -29,12 +29,21 @@ function onRequest(request, response) {
         console.log(body)
     });
 
+    /* response part*/
+    var responseData = '';
+    response.on('data', function(res_chunk) {
+        responseData += res_chunk;
+    });
+    response.on('end', function() {
+        var dataObj = JSON.parse(responseData);
+        console.log("Raw Response: " + responseData);
 
-    response.writeHead(200, { 'Content-Type': 'text/plain' });
-    response.write('Hello World');
-    response.end();
+        response.writeHead(200, {
+            'Content-Type': 'application/json'
+        });
+        response.end();
+        console.log("send_ressponse")
+    });
 }
-
 https.createServer(options, onRequest).listen(443);
-
 console.log('server has started.');
