@@ -50,15 +50,25 @@ function onRequest(req, res) {
                     text: parsedBody.content.text
                 },
             }
+            var url_link = '';
 
-            if (reqBody.content.text==='시작'){
-                reqBody.content.text = '시작하기';
+            if (reqBody.content.text==='시작00'){
+                reqBody.content.text = '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다.';
+                url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push';
+            }
+            else if (reqBody.content.text==='시작01'){
+                reqBody.content.text = '아래메뉴에서 필요한 항목을 선택해주세요';
+                url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push';
+
+            }
+            else if (reqBody.content.text==='시작02'){
 
             }
 
+
             request({
                 method: 'post',
-                url: 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push',
+                url: url_link,
                 json: reqBody,
                 headers: {
                     'Content-Type': 'application/json; charset=utf-8',
