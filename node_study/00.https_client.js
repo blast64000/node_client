@@ -4,7 +4,7 @@ var https = require("https");
 var options = {
 
     hostname: 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot',
-    method: 'get',
+    method: 'GET',
     headers: {
         'Content-Type': 'application/json',
         consumerKey: 'BHOjH7zxMnPPqXwycpf8',
