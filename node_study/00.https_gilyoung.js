@@ -37,13 +37,19 @@ function onRequest(req, res) {
         console.log(body)
 
 
-        console.log('========= body ========.');
-        var content = JSON.parse(body);
+        var parsedBody = JSON.parse(body);
+        var reqBody = {
+            accountId: parsedBody.source.accountId,
+            content: parsedBody.content
+        };
+        console.log('========= req body ========.');
+        console.log(reqBody)
+
         request({
             method: 'post',
             url: 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push',
             json: true,
-            form: content,
+            form: reqBody,
             headers: {
                 'Content-Type': 'application/json',
                 consumerKey: 'BHOjH7zxMnPPqXwycpf8',
