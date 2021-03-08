@@ -77,10 +77,41 @@ function onRequest(req, res) {
                           }, {
                             "type": "message",
                             "label": "복지/업무지원",
-                            "postback": "복지"
+                            "postback": "복지00"
                           }, {
                             "type": "message",
                             "label": "보안",
+                            "postback": "보안"
+                          }
+                        ]
+                    }
+                }
+            }
+            else if (reqBody.content.text==='복지00'){
+                var reqBody = {
+                    accountId: parsedBody.source.accountId,
+                    content: {
+                        type: 'button_template',
+                        contentText: 'what do you want?',
+                        actions: [{
+                            "type": "message",
+                            "label": "학자금지원",
+                            "postback": "인사"
+                          }, {
+                            "type": "message",
+                            "label": "경조사",
+                            "postback": "복지00"
+                          }, {
+                            "type": "message",
+                            "label": "생일축하",
+                            "postback": "보안"
+                          }, {
+                            "type": "message",
+                            "label": "사내 동호회",
+                            "postback": "보안"
+                          }, {
+                            "type": "message",
+                            "label": "장기 리프레시",
                             "postback": "보안"
                           }
                         ]
