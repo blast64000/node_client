@@ -20,6 +20,7 @@ function onRequest(req, res) {
     /* request part*/
     const { headers, method, url } = req;
     let body = [];
+
     req.on('error', (err) => {
         console.error(err);
     }).on('data', (chunk) => {
@@ -36,43 +37,44 @@ function onRequest(req, res) {
         console.log('========= body ========.');
         console.log(body)
 
+        if (headers.host === 'herb-cookie.com') {
 
-        var parsedBody = JSON.parse(body);
+            var parsedBody = JSON.parse(body);
 
-        // if 메세지가 뭐일경우 
-        //content 바꾸기 
-        console.log()
+            console.log()
 
-        var reqBody = {
-            accountId: parsedBody.source.accountId,
-            content: {
-                type: parsedBody.content.type,
-                text: parsedBody.content.text
-            },
+            var reqBody = {
+                accountId: parsedBody.source.accountId,
+                content: {
+                    type: parsedBody.content.type,
+                    text: parsedBody.content.text
+                },
+            }
+
+            console.log('========= req body ========.');
+            console.log(reqBody)
+
+            request({
+                method: 'post',
+                url: 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push',
+                json: reqBody,
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    consumerKey: 'BHOjH7zxMnPPqXwycpf8',
+                    Authorization: 'Bearer AAABAoyo/3zFAMqau9uS6fIR0pPRf2z8FkHbsXa930xScg8gYjguZ81L0S8AszS7flys2lIznE4VfF8UZjFLDjhUHdNkwgYtdHPGpp3PaXc7iyHUtpkZFs9Y3wzS6zhML6zQKNu//940sNw9VqjFkKuulbAoTAF9xsJ7PA0r6OrhaxTzp/cWzEKFTmn81+MBpBvBPPL9N+EcbL+YyQiny+2gV1fHdRQRA2fVO9tiwLkHuLLPVEnpp6BJBfDGKIGy1GUIYiHA0xuEIBMl5vYoVwedo25HpnUhnWIro+GBm1Jhqn3sA6whkep7xsWFxD944TZ7IwiM6i3ipTXVfYppnUwdDINHFBDcTtX/11ienn8E/LRU'
+                }
+            }, function(err, response, body) {
+                if (err) {
+                    console.log('========= enter error ========.');
+                    console.error(err);
+                } else {
+                    console.info(body);
+                }
+            })
+        } else {
+            console.log("other ip comes in");
         }
 
-        console.log('========= req body ========.');
-        console.log(reqBody)
-
-
-
-        request({
-            method: 'post',
-            url: 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push',
-            json: reqBody,
-            headers: {
-                'Content-Type': 'application/json; charset=utf-8',
-                consumerKey: 'BHOjH7zxMnPPqXwycpf8',
-                Authorization: 'Bearer AAABAoyo/3zFAMqau9uS6fIR0pPRf2z8FkHbsXa930xScg8gYjguZ81L0S8AszS7flys2lIznE4VfF8UZjFLDjhUHdNkwgYtdHPGpp3PaXc7iyHUtpkZFs9Y3wzS6zhML6zQKNu//940sNw9VqjFkKuulbAoTAF9xsJ7PA0r6OrhaxTzp/cWzEKFTmn81+MBpBvBPPL9N+EcbL+YyQiny+2gV1fHdRQRA2fVO9tiwLkHuLLPVEnpp6BJBfDGKIGy1GUIYiHA0xuEIBMl5vYoVwedo25HpnUhnWIro+GBm1Jhqn3sA6whkep7xsWFxD944TZ7IwiM6i3ipTXVfYppnUwdDINHFBDcTtX/11ienn8E/LRU'
-            }
-        }, function(err, response, body) {
-            if (err) {
-                console.log('========= enter error ========.');
-                console.error(err);
-            } else {
-                console.info(body);
-            }
-        })
     });
 }
 https.createServer(options, onRequest).listen(443);
