@@ -70,14 +70,19 @@ function onRequest(req, res) {
                         type: 'button_template',
                         contentText: 'what do you want?',
                         actions: [{
-                            "type": "uri",
-                            "label": "WorksMobile Homepage",
-                            "uri": "https://line.worksmobile.com"
+                            "type": "message",
+                            "label": "인사/휴가",
+                            "postback": "인사"
                           }, {
                             "type": "message",
-                            "label": "FAQ",
-                            "postback": "ButtonTemplate_FAQ"
-                          }]
+                            "label": "복지/업무지원",
+                            "postback": "복지"
+                          }, {
+                            "type": "message",
+                            "label": "보안",
+                            "postback": "보안"
+                          }
+                        ]
                     }
                 }
             }
