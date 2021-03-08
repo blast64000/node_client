@@ -1,7 +1,9 @@
 const request = require('../testapp/node_modules/request');
 
 const options = {
-    url: 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot',
+    url: 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/persistentmenu',
+
+
     headers: {
         'Content-Type': 'application/json',
         consumerKey: 'BHOjH7zxMnPPqXwycpf8',
