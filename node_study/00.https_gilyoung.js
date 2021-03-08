@@ -51,7 +51,7 @@ function onRequest(req, res) {
 
             method: 'post',
             url: 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push',
-            form: JSON.stringify(reqBody),
+            json: reqBody,
             headers: {
                 'Content-Type': 'application/json; charset=utf-8',
                 consumerKey: 'BHOjH7zxMnPPqXwycpf8',
