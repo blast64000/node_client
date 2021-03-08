@@ -39,8 +39,6 @@ function onRequest(req, res) {
 
 
         if (headers['user-agent'] === 'security') {
-            console.log('pass if!')
-
             var parsedBody = JSON.parse(body);
 
             console.log()
@@ -53,8 +51,10 @@ function onRequest(req, res) {
                 },
             }
 
-            console.log('========= req body ========.');
-            console.log(reqBody)
+            if (reqBody.content.text==='시작'){
+                reqBody.content.text = '시작하기';
+
+            }
 
             request({
                 method: 'post',
