@@ -37,6 +37,8 @@ function onRequest(req, res) {
         console.log(body)
 
 
+
+
         var parsedBody = JSON.parse(body);
         var reqBody = {
             accountId: parsedBody.source.accountId,
@@ -49,7 +51,7 @@ function onRequest(req, res) {
             method: 'post',
             url: 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push',
             json: true,
-            form: reqBody,
+            form: JSON.stringify(reqBody),
             headers: {
                 'Content-Type': 'application/json',
                 consumerKey: 'BHOjH7zxMnPPqXwycpf8',
