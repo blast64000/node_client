@@ -4,13 +4,13 @@ axios
     .get('https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot',
 
         /*
-        {
-            "name": "Buy the milk_02",
-            "photoUrl": "https://c-sg.smule.com/rs-s27/arr/c6/05/1db60541-5165-4235-9672-e22399291d1f_256.jpg",
-            "description": "api modify test",
-            "managers": ["blast64000@algenbio"]
-        },
-        */
+            {
+                "name": "Buy the milk_02",
+                "photoUrl": "https://c-sg.smule.com/rs-s27/arr/c6/05/1db60541-5165-4235-9672-e22399291d1f_256.jpg",
+                "description": "api modify test",
+                "managers": ["blast64000@algenbio"]
+            },
+            */
         {
             headers: {
                 'Content-Type': 'application/json',
