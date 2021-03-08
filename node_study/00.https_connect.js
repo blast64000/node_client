@@ -1,7 +1,18 @@
 var fs = require("fs")
 var https = require("https");
+const request = require('../testapp/node_modules/request');
 
-var options = {
+
+
+const options = {
+    url: 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/persistentmenu',
+    push_url: 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push',
+
+    headers: {
+        'Content-Type': 'application/json',
+        consumerKey: 'BHOjH7zxMnPPqXwycpf8',
+        Authorization: 'Bearer AAABAoyo/3zFAMqau9uS6fIR0pPRf2z8FkHbsXa930xScg8gYjguZ81L0S8AszS7flys2lIznE4VfF8UZjFLDjhUHdNkwgYtdHPGpp3PaXc7iyHUtpkZFs9Y3wzS6zhML6zQKNu//940sNw9VqjFkKuulbAoTAF9xsJ7PA0r6OrhaxTzp/cWzEKFTmn81+MBpBvBPPL9N+EcbL+YyQiny+2gV1fHdRQRA2fVO9tiwLkHuLLPVEnpp6BJBfDGKIGy1GUIYiHA0xuEIBMl5vYoVwedo25HpnUhnWIro+GBm1Jhqn3sA6whkep7xsWFxD944TZ7IwiM6i3ipTXVfYppnUwdDINHFBDcTtX/11ienn8E/LRU'
+    },
     key: fs.readFileSync('/etc/letsencrypt/archive/herb-cookie.com/privkey1.pem'),
     cert: fs.readFileSync('/etc/letsencrypt/archive/herb-cookie.com/cert1.pem'),
     ca: fs.readFileSync('/etc/letsencrypt/archive/herb-cookie.com/chain1.pem')
@@ -29,21 +40,9 @@ function onRequest(request, response) {
         console.log(body)
     });
 
-    /* response part*/
-    var responseData = '';
-    response.on('data', function(res_chunk) {
-        responseData += res_chunk;
-    });
-    response.on('end', function() {
-        var dataObj = JSON.parse(responseData);
-        console.log("Raw Response: " + responseData);
+    const info = JSON.parse(body);
+    console.log(info.content);
 
-        response.writeHead(200, {
-            'Content-Type': 'application/json'
-        });
-        response.end();
-        console.log("send_ressponse")
-    });
 }
 https.createServer(options, onRequest).listen(443);
 console.log('server has started.');
