@@ -141,6 +141,34 @@ function onRequest(req, res) {
                 }
             }
 
+            else if (reqBody.content.postback==='고등학교'){
+                var reqBody = {
+                    accountId: parsedBody.source.accountId,
+                    content: {
+                        type: 'button_template',
+                        contentText: '고등학교 학자금은 년4회 지급되며 일반국공립고 등록금 실납입액으로 지급됩니다.  지급액에는 입학금, 수업료, 육성회비, 학생회비가 포함됩니다. 추가로 궁금하신 사항이 있으신가요?',
+                        actions: [{
+                            "type": "message",
+                            "label": "학자금신청양식보기",
+                            "postback": "학자금"
+                          }, {
+                            "type": "message",
+                            "label": "학교발부영수증예시보기",
+                            "postback": "영수증"
+                          }, {
+                            "type": "message",
+                            "label": "담당자연락하기",
+                            "postback": "담당자"
+                          }, {
+                            "type": "message",
+                            "label": "초기 메뉴로 돌아가기",
+                            "postback": "초기메뉴"
+                          }
+                        ]
+                    }
+                }
+            }
+
 
             request({
                 method: 'post',
