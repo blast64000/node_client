@@ -8,8 +8,6 @@ var options = {
 };
 
 function onRequest(request, response) {
-
-
     /* request part*/
     console.log('request received.');
     const { headers, method, url } = request;
@@ -29,10 +27,7 @@ function onRequest(request, response) {
         console.log(url)
         console.log('========= body ========.');
         console.log(body)
-
     });
-
-
 
 
     response.writeHead(200, { 'Content-Type': 'text/plain' });

@@ -1,10 +1,13 @@
 var fs = require("fs")
-var http = require("http");
+var https = require("https");
 
 var options = {
 
-    hostname: 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot',
+    hostname: 'www.apis.worksmobile.com',
+    port: '443',
     method: 'GET',
+    path: '/r/kr1unqNPDxwAo/message/v1/bot',
+
     headers: {
         'Content-Type': 'application/json',
         consumerKey: 'BHOjH7zxMnPPqXwycpf8',
@@ -24,10 +27,8 @@ function readJSONResponse(response) {
     response.on('end', function() {
         var dataObj = JSON.parse(responseData);
         console.log("Raw Response: " + responseData);
-        console.log("Message: " + dataObj.message);
-        console.log("Question: " + dataObj.question);
     });
 }
-var req = http.request(options, readJSONResponse);
-req.write('{"name":"Bilbo", "occupation":"Burgler"}');
+var req = https.request(options, readJSONResponse);
+//req.write('{"name":"Bilbo", "occupation":"Burgler"}');
 req.end();
