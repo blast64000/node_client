@@ -16,18 +16,16 @@ const options = {
     ca: fs.readFileSync('/etc/letsencrypt/archive/herb-cookie.com/chain1.pem')
 };
 
-
-
-function onRequest(request, response) {
+function onRequest(req, res) {
     /* request part*/
-    const { headers, method, url } = request;
+    const { headers, method, url } = req;
     let body = [];
-    request.on('error', (err) => {
+    req.on('error', (err) => {
         console.error(err);
     }).on('data', (chunk) => {
         body.push(chunk);
     }).on('end', () => {
-        console.log('request received.');
+        console.log('req received.');
         body = Buffer.concat(body).toString();
         console.log('========= headers ========.');
         console.log(headers)
@@ -37,8 +35,23 @@ function onRequest(request, response) {
         console.log(url)
         console.log('========= body ========.');
         console.log(body)
-    });
 
+
+        console.log('========= body ========.');
+        var content = JSON.parse(body).content;
+        request({
+            method: 'post',
+            url: 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push',
+            json: true,
+            from: content
+        }, function(err, response, body) {
+            if (err) {
+                console.error(err);
+            } else {
+                console.info(body);
+            }
+        })
+    });
 }
 https.createServer(options, onRequest).listen(443);
 console.log('server has started.');
