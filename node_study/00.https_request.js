@@ -21,8 +21,8 @@ function callback(error, response, body) {
 
 
     console.log("★parse functions")
-    const info = JSON.parse(body.content.actions);
-    console.log(info);
+    const info = JSON.parse(body);
+    console.log(info.content);
 }
 
 request(options, callback);
