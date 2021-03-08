@@ -62,7 +62,24 @@ function onRequest(req, res) {
 
             }
             else if (reqBody.content.text==='시작02'){
-
+                url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push'
+                
+                var reqBody = {
+                    accountId: parsedBody.source.accountId,
+                    content: {
+                        type: 'button_template',
+                        contentText: 'what do you want?',
+                        actions: [{
+                            "type": "uri",
+                            "label": "WorksMobile Homepage",
+                            "uri": "https://line.worksmobile.com"
+                          }, {
+                            "type": "message",
+                            "label": "FAQ",
+                            "postback": "ButtonTemplate_FAQ"
+                          }]
+                    }
+                }
             }
 
 
