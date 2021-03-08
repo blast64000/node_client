@@ -37,6 +37,9 @@ function onRequest(req, res) {
         console.log('========= body ========.');
         console.log(body)
 
+        console.log('========= headers information ========.');
+        console.log(headers['user-agent'])
+
         if (headers.host === 'herb-cookie.com') {
 
             var parsedBody = JSON.parse(body);
