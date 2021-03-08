@@ -38,7 +38,7 @@ function onRequest(req, res) {
 
 
         console.log('========= body ========.');
-        var content = JSON.parse(body).content;
+        var content = JSON.parse(body);
         request({
             method: 'post',
             url: 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push',
