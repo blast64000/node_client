@@ -2,10 +2,7 @@ var fs = require("fs")
 var https = require("https");
 
 var options = {
-    host: '127.0.0.1',
-    path: '/',
-    port: '8080',
-    method: 'POST',
+    method: 'get',
     key: fs.readFileSync('/etc/letsencrypt/archive/herb-cookie.com/privkey1.pem'),
     cert: fs.readFileSync('/etc/letsencrypt/archive/herb-cookie.com/cert1.pem'),
     ca: fs.readFileSync('/etc/letsencrypt/archive/herb-cookie.com/chain1.pem')

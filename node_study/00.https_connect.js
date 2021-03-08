@@ -16,26 +16,26 @@ function onRequest(request, response) {
     let body = [];
 
     request.on('error', (err) => {
-      console.error(err);
+        console.error(err);
     }).on('data', (chunk) => {
-      body.push(chunk);
+        body.push(chunk);
     }).on('end', () => {
-      body = Buffer.concat(body).toString();  
-      console.log('========= headers ========.');
-      console.log(headers)
-      console.log('========= moethod ========.');
-      console.log(method)
-      console.log('========= url ========.');
-      console.log(url)
-      console.log('========= body ========.');
-      console.log(body)
-    
+        body = Buffer.concat(body).toString();
+        console.log('========= headers ========.');
+        console.log(headers)
+        console.log('========= moethod ========.');
+        console.log(method)
+        console.log('========= url ========.');
+        console.log(url)
+        console.log('========= body ========.');
+        console.log(body)
+
     });
 
 
 
 
-    response.writeHead(200, {'Content-Type' : 'text/plain'});
+    response.writeHead(200, { 'Content-Type': 'text/plain' });
     response.write('Hello World');
     response.end();
 }
