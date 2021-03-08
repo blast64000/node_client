@@ -48,9 +48,10 @@ function onRequest(req, res) {
                 accountId: parsedBody.source.accountId,
                 content: {
                     type: parsedBody.content.type,
-                    text: parsedBody.content.text
+                    text: parsedBody.content.text,
+                    postback: parsedBody.content.postback
                 },
-                postback:""
+
             }
             
 
@@ -90,6 +91,7 @@ function onRequest(req, res) {
                 }
             }
             else if (reqBody.content.postback==='복지00'){
+                console.log("enter postpack option")
                 var reqBody = {
                     accountId: parsedBody.source.accountId,
                     content: {
