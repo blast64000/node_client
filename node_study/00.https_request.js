@@ -12,9 +12,17 @@ const options = {
 };
 
 function callback(error, response, body) {
-    console.log("callback received")
+    console.log("★callback received")
+
+
+
+    console.log("★stringify functions")
+    console.log(JSON.stringify(body));
+
+
+    console.log("★parse functions")
     const info = JSON.parse(body);
-    console.log(info);
+    console.log(info.actions);
 }
 
 request(options, callback);
