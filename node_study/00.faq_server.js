@@ -55,121 +55,236 @@ function onRequest(req, res) {
             }
             
 
-            if (reqBody.content.text==='시작00'){
+            if (reqBody.content.text==='시작하기'){
                 reqBody.content.text = '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다.';
                 url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push';
-            }
-            else if (reqBody.content.text==='시작01'){
-                reqBody.content.text = '아래메뉴에서 필요한 항목을 선택해주세요';
-                url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push';
-
-            }
-            else if (reqBody.content.text==='시작02'){
-                url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push'
-                
                 var reqBody = {
                     accountId: parsedBody.source.accountId,
                     postback:"",
                     content: {
                         type: 'button_template',
-                        contentText: 'what do you want?',
+                        contentText: '아래 메뉴에서 필요한 항목을 선택해주세요',
                         actions: [{
                             "type": "message",
-                            "label": "인사/휴가",
-                            "postback": "인사"
+                            "label": "경력채용",
+                            "postback": "경력채용"
                           }, {
                             "type": "message",
-                            "label": "복지/업무지원",
-                            "postback": "복지00"
+                            "label": "인턴채용",
+                            "postback": "인턴채용"
                           }, {
                             "type": "message",
-                            "label": "보안",
-                            "postback": "보안"
+                            "label": "계약직 및 단기 일용직",
+                            "postback": "계약직"
+                          }, {
+                            "type": "message",
+                            "label": "우수인재 Pool 및 사내추천",
+                            "postback": "사내추천"
+                          }, {
+                            "type": "message",
+                            "label": "기타",
+                            "postback": "기타"
                           }
                         ]
                     }
                 }
             }
-            else if (reqBody.content.postback==='복지00'){
+            else if (reqBody.content.postback==='안녕?'){
+                reqBody.content.text = '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다.';
+                url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push';
                 var reqBody = {
                     accountId: parsedBody.source.accountId,
                     content: {
                         type: 'button_template',
-                        contentText: 'what do you want?',
+                        contentText: '아래 메뉴에서 필요한 항목을 선택해주세요',
                         actions: [{
                             "type": "message",
-                            "label": "학자금지원",
-                            "postback": "복지01"
+                            "label": "경력채용",
+                            "postback": "경력채용00"
                           }, {
                             "type": "message",
-                            "label": "경조사",
-                            "postback": "복지00"
+                            "label": "인턴채용",
+                            "postback": "인턴채용"
                           }, {
                             "type": "message",
-                            "label": "생일축하",
-                            "postback": "보안"
+                            "label": "계약직 및 단기 일용직",
+                            "postback": "계약직"
                           }, {
                             "type": "message",
-                            "label": "사내 동호회",
-                            "postback": "보안"
+                            "label": "우수인재 Pool 및 사내추천",
+                            "postback": "사내추천"
                           }, {
                             "type": "message",
-                            "label": "장기 리프레시",
-                            "postback": "보안"
+                            "label": "기타",
+                            "postback": "기타"
                           }
                         ]
                     }
                 }
             }
-            else if (reqBody.content.postback==='복지01'){
+            else if (reqBody.content.postback==='경력채용00'){
                 var reqBody = {
                     accountId: parsedBody.source.accountId,
                     content: {
                         type: 'button_template',
-                        contentText: '학자금 지원은 직원 및 자녀의 학자금을 지원하며 발생 연도내 지원이 원칙입니다. 지원대상을 선택해주세요',
+                        contentText: '대웅의 경력채용 기준은 [주니어경력]은 1년 이상, [경력]은 3년 이상입니다. * 유관경력기준 ',
                         actions: [{
                             "type": "message",
-                            "label": "고등학교",
-                            "postback": "고등학교"
+                            "label": "다음",
+                            "postback": "경력채용01"
                           }, {
                             "type": "message",
-                            "label": "대학교",
-                            "postback": "대학교"
+                            "label": "처음으로 돌아가기",
+                            "postback": "시작하기"
+                          }
+                        ]
+                    }
+                }
+            }
+            else if (reqBody.content.postback==='경력채용01'){
+                var reqBody = {
+                    accountId: parsedBody.source.accountId,
+                    content: {
+                        type: 'button_template',
+                        contentText: '증/충원 요청서를 상신하여 결재 받았나요?',
+                        actions: [{
+                            "type": "message",
+                            "label": "네",
+                            "postback": "경력채용02y"
+                          }, {
+                            "type": "message",
+                            "label": "아니오",
+                            "postback": "경력채용02n"
                           }
                         ]
                     }
                 }
             }
 
-            else if (reqBody.content.postback==='고등학교'){
+            else if (reqBody.content.postback==='경력채용02n'){
                 var reqBody = {
                     accountId: parsedBody.source.accountId,
                     content: {
                         type: 'button_template',
-                        contentText: '고등학교 학자금은 년4회 지급되며 일반국공립고 등록금 실납입액으로 지급됩니다.  지급액에는 입학금, 수업료, 육성회비, 학생회비가 포함됩니다. 추가로 궁금하신 사항이 있으신가요?',
+                        contentText: '증/충원요청서를 상신해주시기 바랍니다. 전체프로세스를 알고싶으시면, 게시판 > 인사공지사항 > “채용”을 검색하시면 운영안을 확인하실수 있습니다.',
                         actions: [{
                             "type": "message",
-                            "label": "학자금신청양식보기",
-                            "postback": "학자금"
-                          }, {
+                            "label": "처음으로 돌아가기",
+                            "postback": "시작하기"
+                          }
+                        ]
+                    }
+                }
+            }
+
+            else if (reqBody.content.postback==='경력채용02y'){
+                var reqBody = {
+                    accountId: parsedBody.source.accountId,
+                    content: {
+                        type: 'button_template',
+                        contentText: '결재완료된 증/충원요청서와 JD를 작성하여 인사팀에 메일을 보내주세요.',
+                        actions: [{
                             "type": "message",
-                            "label": "학교발부영수증예시보기",
-                            "postback": "영수증"
-                          }, {
+                            "label": "다음",
+                            "postback": "경력채용03"
+                          }
+                        ]
+                    }
+                }
+            }
+
+            else if (reqBody.content.postback==='경력채용03'){
+                var reqBody = {
+                    accountId: parsedBody.source.accountId,
+                    content: {
+                        type: 'button_template',
+                        contentText: '인사팀에서 채용포털과 헤드헌팅을 통해서 공고를 오픈합니다.',
+                        actions: [{
                             "type": "message",
-                            "label": "담당자연락하기",
+                            "label": "다음",
+                            "postback": "경력채용04"
+                          }
+                        ]
+                    }
+                }
+            }
+
+            else if (reqBody.content.postback==='경력채용04'){
+                var reqBody = {
+                    accountId: parsedBody.source.accountId,
+                    content: {
+                        type: 'button_template',
+                        contentText: '이후 부터는 인사팀 담당자를 통해서 채용 프로세스를 진행/안내 받으시면 됩니다.',
+                        actions: [{
+                            "type": "message",
+                            "label": "다음",
+                            "postback": "경력채용05"
+                          }
+                        ]
+                    }
+                }
+            }
+
+            else if (reqBody.content.postback==='경력채용05'){
+                var reqBody = {
+                    accountId: parsedBody.source.accountId,
+                    content: {
+                        type: 'button_template',
+                        contentText: '추가로 궁금하신 사항이 있으신가요?',
+                        actions: [{
+                            "type": "message",
+                            "label": "채용 전체 프로세스",
+                            "postback": "경력채용06"
+                          },
+                          
+                          {
+                            "type": "message",
+                            "label": "담당자 연락하기",
                             "postback": "담당자"
-                          }, {
+                          },
+                          
+                          {
                             "type": "message",
                             "label": "초기 메뉴로 돌아가기",
-                            "postback": "초기메뉴"
+                            "postback": "시작하기"
                           }
                         ]
                     }
                 }
             }
 
+            else if (reqBody.content.postback==='경력채용06'){
+                var reqBody = {
+                    accountId: parsedBody.source.accountId,
+                    content: {
+                        type: 'button_template',
+                        contentText: '전체프로세스는 베어월드 게시판 > 인사공지사항 >  “채용”을 검색하시면 운영안을 확인하실수 있습니다.',
+                        actions: [{
+                            "type": "message",
+                            "label": "이전으로 돌아가기",
+                            "postback": "경력채용05"
+                          }
+                        ]
+                    }
+                }
+            }
 
+            else if (reqBody.content.postback==='담당자'){
+                var reqBody = {
+                    accountId: parsedBody.source.accountId,
+                    content: {
+                        type: 'button_template',
+                        contentText: '연락처 류효인(내선 : 8171)',
+                        actions: [{
+                            "type": "message",
+                            "label": "이전으로 돌아가기",
+                            "postback": "경력채용05"
+                          }
+                        ]
+                    }
+                }
+            }
+            
             request({
                 method: 'post',
                 url: url_link,
