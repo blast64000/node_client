@@ -67,7 +67,7 @@ function onRequest(req, res) {
                         actions: [{
                             "type": "message",
                             "label": "경력채용",
-                            "postback": "경력채용"
+                            "postback": "경력채용00"
                           }, {
                             "type": "message",
                             "label": "인턴채용",
