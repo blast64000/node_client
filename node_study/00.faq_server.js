@@ -79,7 +79,7 @@ function onRequest(req, res) {
                           }, {
                             "type": "message",
                             "label": "우수인재 Pool 및 사내추천",
-                            "postback": "사내추천"
+                            "postback": "사내추천00"
                           }, {
                             "type": "message",
                             "label": "기타",
@@ -112,7 +112,7 @@ function onRequest(req, res) {
                           }, {
                             "type": "message",
                             "label": "우수인재 Pool 및 사내추천",
-                            "postback": "사내추천"
+                            "postback": "사내추천00"
                           }, {
                             "type": "message",
                             "label": "기타",
