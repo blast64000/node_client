@@ -63,7 +63,7 @@ function onRequest(req, res) {
                     postback:"",
                     content: {
                         type: 'button_template',
-                        contentText: '아래 메뉴에서 필요한 항목을 선택해주세요',
+                        contentText: '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다. 아래 메뉴에서 필요한 항목을 선택해주세요',
                         actions: [{
                             "type": "message",
                             "label": "경력채용",
@@ -96,7 +96,40 @@ function onRequest(req, res) {
                     accountId: parsedBody.source.accountId,
                     content: {
                         type: 'button_template',
-                        contentText: '아래 메뉴에서 필요한 항목을 선택해주세요',
+                        contentText: '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다. 아래 메뉴에서 필요한 항목을 선택해주세요',
+                        actions: [{
+                            "type": "message",
+                            "label": "경력채용",
+                            "postback": "경력채용00"
+                          }, {
+                            "type": "message",
+                            "label": "인턴채용",
+                            "postback": "인턴채용"
+                          }, {
+                            "type": "message",
+                            "label": "계약직 및 단기 일용직",
+                            "postback": "계약직"
+                          }, {
+                            "type": "message",
+                            "label": "우수인재 Pool 및 사내추천",
+                            "postback": "사내추천"
+                          }, {
+                            "type": "message",
+                            "label": "기타",
+                            "postback": "기타"
+                          }
+                        ]
+                    }
+                }
+            }
+            else if (reqBody.content.text==='시작하기'){
+                reqBody.content.text = '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다.';
+                url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push';
+                var reqBody = {
+                    accountId: parsedBody.source.accountId,
+                    content: {
+                        type: 'button_template',
+                        contentText: '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다. 아래 메뉴에서 필요한 항목을 선택해주세요',
                         actions: [{
                             "type": "message",
                             "label": "경력채용",
