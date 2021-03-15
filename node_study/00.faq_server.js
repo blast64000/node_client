@@ -89,7 +89,7 @@ function onRequest(req, res) {
                     }
                 }
             }
-            else if (reqBody.content.postback==='안녕?'){
+            else if (reqBody.content.text==='안녕?'){
                 reqBody.content.text = '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다.';
                 url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push';
                 var reqBody = {
