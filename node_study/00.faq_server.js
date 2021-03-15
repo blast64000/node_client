@@ -336,7 +336,7 @@ function onRequest(req, res) {
                           {
                             "type": "message",
                             "label": "담당자 연락하기",
-                            "postback": "담당자"
+                            "postback": "사내추천담당자"
                           },
                           
                           {
@@ -354,6 +354,24 @@ function onRequest(req, res) {
                     }
                 }
             }
+
+            else if (reqBody.content.postback==='사내추천담당자'){
+                var reqBody = {
+                    accountId: parsedBody.source.accountId,
+                    content: {
+                        type: 'button_template',
+                        contentText: '연락처 류효인(내선 : 8171)',
+                        actions: [{
+                            "type": "message",
+                            "label": "이전으로 돌아가기",
+                            "postback": "사내추천09"
+                          }
+                        ]
+                    }
+                }
+            }
+
+
 
             else if (reqBody.content.postback==='사내추천10'){
                 var reqBody = {
