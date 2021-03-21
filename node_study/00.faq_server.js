@@ -27,146 +27,145 @@ function onRequest(req, res) {
     }).on('data', (chunk) => {
         body.push(chunk);
     }).on('end', () => {
-            console.log('req received.');
-            body = Buffer.concat(body).toString();
-            console.log('========= headers ========.');
-            console.log(headers)
-            console.log('========= moethod ========.');
-            console.log(method)
-            console.log('========= url ========.');
-            console.log(url)
-            console.log('========= body ========.');
-            console.log(body)
+        console.log('req received.');
+        body = Buffer.concat(body).toString();
+        console.log('========= headers ========.');
+        console.log(headers)
+        console.log('========= moethod ========.');
+        console.log(method)
+        console.log('========= url ========.');
+        console.log(url)
+        console.log('========= body ========.');
+        console.log(body)
 
 
-            if (headers['user-agent'] === 'security') {
-                var parsedBody = JSON.parse(body);
+        if (headers['user-agent'] === 'security') {
+            var parsedBody = JSON.parse(body);
 
-                console.log()
+            console.log()
 
+            var reqBody = {
+                accountId: parsedBody.source.accountId,
+                content: {
+                    type: parsedBody.content.type,
+                    text: parsedBody.content.text,
+                    postback: parsedBody.content.postback
+                },
+
+            }
+
+
+            if (reqBody.content.text === '시작하기') {
+                reqBody.content.text = '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다.';
+                url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push';
+                var reqBody = {
+                    accountId: parsedBody.source.accountId,
+                    postback: "",
+                    content: {
+                        type: 'button_template',
+                        contentText: '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다. 아래 메뉴에서 필요한 항목을 선택해주세요',
+                        actions: [{
+                            "type": "message",
+                            "label": "인사",
+                            "postback": "인사00"
+                        }, {
+                            "type": "message",
+                            "label": "복리후생",
+                            "postback": "복리후생00"
+                        }, {
+                            "type": "message",
+                            "label": "베어월드",
+                            "postback": "베어월드00"
+                        }]
+                    }
+                }
+            } else if (reqBody.content.text === '안녕?') {
+                reqBody.content.text = '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다.';
+                url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push';
                 var reqBody = {
                     accountId: parsedBody.source.accountId,
                     content: {
-                        type: parsedBody.content.type,
-                        text: parsedBody.content.text,
-                        postback: parsedBody.content.postback
-                    },
-
+                        type: 'button_template',
+                        contentText: '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다. 아래 메뉴에서 필요한 항목을 선택해주세요',
+                        actions: [{
+                            "type": "message",
+                            "label": "인사",
+                            "postback": "인사00"
+                        }, {
+                            "type": "message",
+                            "label": "복리후생",
+                            "postback": "복리후생00"
+                        }, {
+                            "type": "message",
+                            "label": "베어월드",
+                            "postback": "베어월드00"
+                        }]
+                    }
                 }
-
-
-                if (reqBody.content.text === '시작하기') {
-                    reqBody.content.text = '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다.';
-                    url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push';
-                    var reqBody = {
-                        accountId: parsedBody.source.accountId,
-                        postback: "",
-                        content: {
-                            type: 'button_template',
-                            contentText: '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다. 아래 메뉴에서 필요한 항목을 선택해주세요',
-                            actions: [{
-                                "type": "message",
-                                "label": "인사",
-                                "postback": "인사00"
-                            }, {
-                                "type": "message",
-                                "label": "복리후생",
-                                "postback": "복리후생00"
-                            }, {
-                                "type": "message",
-                                "label": "베어월드",
-                                "postback": "베어월드00"
-                            }]
-                        }
+            } else if (reqBody.content.postback === '시작하기') {
+                reqBody.content.text = '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다.';
+                url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push';
+                var reqBody = {
+                    accountId: parsedBody.source.accountId,
+                    content: {
+                        type: 'button_template',
+                        contentText: '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다. 아래 메뉴에서 필요한 항목을 선택해주세요',
+                        actions: [{
+                            "type": "message",
+                            "label": "인사",
+                            "postback": "인사00"
+                        }, {
+                            "type": "message",
+                            "label": "복리후생",
+                            "postback": "복리후생00"
+                        }, {
+                            "type": "message",
+                            "label": "베어월드",
+                            "postback": "베어월드00"
+                        }]
                     }
-                } else if (reqBody.content.text === '안녕?') {
-                    reqBody.content.text = '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다.';
-                    url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push';
-                    var reqBody = {
-                        accountId: parsedBody.source.accountId,
-                        content: {
-                            type: 'button_template',
-                            contentText: '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다. 아래 메뉴에서 필요한 항목을 선택해주세요',
-                            actions: [{
+                }
+            } else if (reqBody.content.postback === '인사00') {
+                var reqBody = {
+                    accountId: parsedBody.source.accountId,
+                    content: {
+                        type: 'button_template',
+                        contentText: '인사 업무 관련해 궁금하신 부분을 선택해 주세요',
+                        actions: [{
                                 "type": "message",
-                                "label": "인사",
-                                "postback": "인사00"
+                                "label": "채용",
+                                "postback": "채용00"
                             }, {
                                 "type": "message",
-                                "label": "복리후생",
-                                "postback": "복리후생00"
+                                "label": "육성",
+                                "postback": "육성00"
                             }, {
                                 "type": "message",
-                                "label": "베어월드",
-                                "postback": "베어월드00"
-                            }]
-                        }
-                    }
-                } else if (reqBody.content.postback === '시작하기') {
-                    reqBody.content.text = '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다.';
-                    url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push';
-                    var reqBody = {
-                        accountId: parsedBody.source.accountId,
-                        content: {
-                            type: 'button_template',
-                            contentText: '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다. 아래 메뉴에서 필요한 항목을 선택해주세요',
-                            actions: [{
-                                "type": "message",
-                                "label": "인사",
-                                "postback": "인사00"
+                                "label": "평가",
+                                "postback": "평가00"
                             }, {
                                 "type": "message",
-                                "label": "복리후생",
-                                "postback": "복리후생00"
+                                "label": "보상",
+                                "postback": "보상00"
                             }, {
                                 "type": "message",
-                                "label": "베어월드",
-                                "postback": "베어월드00"
-                            }]
-                        }
-                    }
-                } else if (reqBody.content.postback === '인사00') {
-                    var reqBody = {
-                        accountId: parsedBody.source.accountId,
-                        content: {
-                            type: 'button_template',
-                            contentText: '인사 업무 관련해 궁금하신 부분을 선택해 주세요',
-                            actions: [{
-                                    "type": "message",
-                                    "label": "채용",
-                                    "postback": "채용00"
-                                }, {
-                                    "type": "message",
-                                    "label": "육성",
-                                    "postback": "육성00"
-                                }, {
-                                    "type": "message",
-                                    "label": "평가",
-                                    "postback": "평가00"
-                                }, {
-                                    "type": "message",
-                                    "label": "보상",
-                                    "postback": "보상00"
-                                }, {
-                                    "type": "message",
-                                    "label": "근태",
-                                    "postback": "근태00"
-                                }, {
-                                    "type": "message",
-                                    "label": "휴가",
-                                    "postback": "휴가00"
-                                }, {
-                                    "type": "message",
-                                    "label": "기타(퇴직)",
-                                    "postback": "퇴직00"
-                                }, {
-                                    "type": "message",
-                                    "label": "담당자가 궁금해요",
-                                    "postback": "담당자00"
-                                }
+                                "label": "근태",
+                                "postback": "근태00"
+                            }, {
+                                "type": "message",
+                                "label": "휴가",
+                                "postback": "휴가00"
+                            }, {
+                                "type": "message",
+                                "label": "기타(퇴직)",
+                                "postback": "퇴직00"
+                            }, {
+                                "type": "message",
+                                "label": "담당자가 궁금해요",
+                                "postback": "담당자00"
+                            }
 
-                            ]
-                        }
+                        ]
                     }
                 }
             } else if (reqBody.content.postback === '인사00') {
@@ -335,9 +334,7 @@ function onRequest(req, res) {
                         ]
                     }
                 }
-            }
-
-            if (reqBody.content.postback === '인사00') {
+            } else if (reqBody.content.postback === '인사00') {
                 url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push';
                 var reqBody = {
                     accountId: parsedBody.source.accountId,
