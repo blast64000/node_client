@@ -163,49 +163,10 @@ function onRequest(req, res) {
                                 "type": "message",
                                 "label": "담당자가 궁금해요",
                                 "postback": "담당자00"
-                            }
-
-                        ]
-                    }
-                }
-            } else if (reqBody.content.postback === '인사00') {
-                var reqBody = {
-                    accountId: parsedBody.source.accountId,
-                    content: {
-                        type: 'button_template',
-                        contentText: '인사 업무 관련해 궁금하신 부분을 선택해 주세요',
-                        actions: [{
-                                "type": "message",
-                                "label": "채용",
-                                "postback": "채용00"
                             }, {
                                 "type": "message",
-                                "label": "육성",
-                                "postback": "육성00"
-                            }, {
-                                "type": "message",
-                                "label": "평가",
-                                "postback": "평가00"
-                            }, {
-                                "type": "message",
-                                "label": "보상",
-                                "postback": "보상00"
-                            }, {
-                                "type": "message",
-                                "label": "근태",
-                                "postback": "근태00"
-                            }, {
-                                "type": "message",
-                                "label": "휴가",
-                                "postback": "휴가00"
-                            }, {
-                                "type": "message",
-                                "label": "기타(퇴직)",
-                                "postback": "퇴직00"
-                            }, {
-                                "type": "message",
-                                "label": "담당자가 궁금해요",
-                                "postback": "담당자00"
+                                "label": "처음으로 돌아가기",
+                                "postback": "시작하기"
                             }
 
                         ]
@@ -334,7 +295,7 @@ function onRequest(req, res) {
                         ]
                     }
                 }
-            } else if (reqBody.content.postback === '인사00') {
+            } else if (reqBody.content.postback === '채용00') {
                 url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push';
                 var reqBody = {
                     accountId: parsedBody.source.accountId,
