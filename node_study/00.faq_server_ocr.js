@@ -38,7 +38,6 @@ function onRequest(req, res) {
         console.log('========= body ========.');
         console.log(body)
 
-
         if (headers['user-agent'] === 'security') {
             var parsedBody = JSON.parse(body);
 
@@ -55,7 +54,6 @@ function onRequest(req, res) {
             }
 
             if (reqBody.content.text === '시작하기') {
-                url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/2112659/message/push';
                 var reqBody = {
                     accountId: parsedBody.source.accountId,
                     postback: "",
@@ -74,25 +72,20 @@ function onRequest(req, res) {
                     }
                 }
             } else if (reqBody.content.text === '안녕?') {
-                reqBody.content.text = '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다.';
-                url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/2112659/message/push';
                 var reqBody = {
                     accountId: parsedBody.source.accountId,
+                    postback: "",
                     content: {
                         type: 'button_template',
-                        contentText: '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다. 아래 메뉴에서 필요한 항목을 선택해주세요',
+                        contentText: '안녕하세요 웅디입니다. 서비스를 제공하기 전, 몇가지 정보를 확인하도록 하겠습니다. \n성별이 어떻게 되시나요?',
                         actions: [{
                             "type": "message",
-                            "label": "인사",
-                            "postback": "인사00"
+                            "label": "남자",
+                            "postback": "성별00"
                         }, {
                             "type": "message",
-                            "label": "복리후생",
-                            "postback": "복리후생00"
-                        }, {
-                            "type": "message",
-                            "label": "베어월드",
-                            "postback": "베어월드00"
+                            "label": "여자",
+                            "postback": "성별01"
                         }]
                     }
                 }
