@@ -40,7 +40,7 @@ function onRequest(req, res) {
 
         if (headers['user-agent'] === 'security') {
             var parsedBody = JSON.parse(body);
-            url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push';
+            url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/2112659/message/push';
             console.log()
             var reqBody = {
                 accountId: parsedBody.source.accountId,
