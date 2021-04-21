@@ -38,7 +38,6 @@ function onRequest(req, res) {
         console.log('========= body ========.');
         console.log(body)
 
-
         if (headers['user-agent'] === 'security') {
             var parsedBody = JSON.parse(body);
 
