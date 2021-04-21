@@ -41,6 +41,7 @@ function onRequest(req, res) {
         if (headers['user-agent'] === 'security') {
             var parsedBody = JSON.parse(body);
             url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/2112659/message/push';
+            gender = "무응답"
             console.log()
             var reqBody = {
                 accountId: parsedBody.source.accountId,
@@ -86,12 +87,12 @@ function onRequest(req, res) {
                         }]
                     }
                 }
-            } else if (reqBody.content.postback === '성별00') {
+            } else if (reqBody.content.postback === '성별00' || reqBody.content.postback === '성별01') {
                 var reqBody = {
                     accountId: parsedBody.source.accountId,
                     content: {
                         type: 'button_template',
-                        contentText: '대웅의 경력채용 기준은 [주니어경력]은 1년 이상, [경력]은 3년 이상입니다. * 유관경력기준 ',
+                        contentText: ' 당신의 성별은  : ' + gender,
                         actions: [{
                             "type": "message",
                             "label": "다음",
