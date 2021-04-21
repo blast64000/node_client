@@ -55,6 +55,7 @@ function onRequest(req, res) {
             }
 
             if (reqBody.content.text === '시작하기') {
+                url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/2112659/message/push';
                 var reqBody = {
                     accountId: parsedBody.source.accountId,
                     postback: "",
@@ -74,6 +75,7 @@ function onRequest(req, res) {
                 }
             } else if (reqBody.content.text === '안녕?') {
                 reqBody.content.text = '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다.';
+                url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/2112659/message/push';
                 var reqBody = {
                     accountId: parsedBody.source.accountId,
                     content: {
