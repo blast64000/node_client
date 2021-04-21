@@ -42,7 +42,6 @@ function onRequest(req, res) {
             var parsedBody = JSON.parse(body);
             url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push';
             console.log()
-
             var reqBody = {
                 accountId: parsedBody.source.accountId,
                 content: {
@@ -50,11 +49,8 @@ function onRequest(req, res) {
                     text: parsedBody.content.text,
                     postback: parsedBody.content.postback
                 },
-
             }
-
             if (reqBody.content.text === '시작하기') {
-
                 var reqBody = {
                     accountId: parsedBody.source.accountId,
                     postback: "",
