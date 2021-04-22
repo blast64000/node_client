@@ -18,7 +18,9 @@ const options = {
 };
 
 function onRequest(req, res) {
-    /* request part*/
+    gender = "무응답"
+    user_age = "무응답"
+        /* request part*/
     const { headers, method, url } = req;
     let body = [];
 
@@ -41,7 +43,6 @@ function onRequest(req, res) {
         if (headers['user-agent'] === 'security') {
             var parsedBody = JSON.parse(body);
             url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/2112659/message/push';
-            gender = "무응답"
             console.log()
             var reqBody = {
                 accountId: parsedBody.source.accountId,
@@ -88,20 +89,62 @@ function onRequest(req, res) {
                     }
                 }
             } else if (reqBody.content.postback === '성별00' || reqBody.content.postback === '성별01') {
+                if (reqBody.content.postback === '성별00') {
+                    gender = '남자'
+                } else if (reqBody.content.postback === '성별01') {
+                    gender = '여자'
+                }
                 var reqBody = {
                     accountId: parsedBody.source.accountId,
                     content: {
                         type: 'button_template',
-                        contentText: ' 당신의 성별은  : ' + gender,
+                        contentText: ' 연령대를 선택해주세요',
+
+                        actions: [{
+                                "type": "message",
+                                "label": "성인",
+                                "postback": "연령00"
+                            }, {
+                                "type": "message",
+                                "label": "청소년",
+                                "postback": "연령01"
+                            },
+                            {
+                                "type": "message",
+                                "label": "유아",
+                                "postback": "연령02"
+                            }
+                        ]
+                    }
+                }
+            } else if (reqBody.content.postback === '연령00' || reqBody.content.postback === '연령01' || reqBody.content.postback === '연령02') {
+
+                if (reqBody.content.postback === '연령00') {
+                    user_age = '성인'
+                } else if (reqBody.content.postback === '연령01') {
+                    user_age = '청소년'
+                } else if (reqBody.content.postback === '연령02') {
+                    user_age = '유아'
+                }
+
+                var reqBody = {
+                    accountId: parsedBody.source.accountId,
+                    postback: "",
+                    content: {
+                        type: 'button_template',
+                        contentText: gender + user_age + '맞으신가요? ',
                         actions: [{
                             "type": "message",
-                            "label": "다음",
-                            "postback": "경력채용01"
+                            "label": "남자",
+                            "postback": "성별00"
+                        }, {
+                            "type": "message",
+                            "label": "여자",
+                            "postback": "성별01"
                         }]
                     }
                 }
             }
-
             request({
                 method: 'post',
                 url: url_link,
