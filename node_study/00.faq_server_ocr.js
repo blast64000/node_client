@@ -1,6 +1,8 @@
 var fs = require("fs")
 var https = require("https");
 var url_link = '';
+var gender = "무응답"
+var user_age = "무응답"
 const request = require('../testapp/node_modules/request');
 
 const options = {
@@ -18,9 +20,7 @@ const options = {
 };
 
 function onRequest(req, res) {
-    gender = "무응답"
-    user_age = "무응답"
-        /* request part*/
+    /* request part*/
     const { headers, method, url } = req;
     let body = [];
 
