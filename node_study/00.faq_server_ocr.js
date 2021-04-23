@@ -260,12 +260,12 @@ function onRequest(req, res) {
                         actions: [{
                             //defined input
                             "type": "message",
-                            "label": "확인 했습니다.",
-                            "postback": "주의사항00"
+                            "label": "처음으로 돌아가기",
+                            "postback": "시작하기"
                         }]
                     }
                 }
-            } else if (reqBody.content.postback === '주의사항00') {
+            } else if (reqBody.content.postback === '효능00') {
                 var reqBody = {
                     accountId: parsedBody.source.accountId,
                     content: {
