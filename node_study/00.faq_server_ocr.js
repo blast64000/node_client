@@ -220,7 +220,7 @@ function onRequest(req, res) {
                         accountId: parsedBody.source.accountId,
                         content: {
                             type: 'button_template',
-                            contentText: '등록하신 약중에 화이투벤 씨플러스(PK_046)은 \n 가려움 증상에 완화에 도움이 됩니다 현재 보유중이신가요?',
+                            contentText: '등록하신 약중에 화이투벤 씨플러스는 \n 가려움 증상에 완화에 도움이 됩니다 현재 보유중이신가요?',
 
                             actions: [{
                                 //defined input
