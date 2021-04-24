@@ -132,7 +132,7 @@ function onRequest(req, res) {
                     postback: "",
                     content: {
                         type: 'button_template',
-                        contentText: gender + user_age + '맞으신가요? ',
+                        contentText: gender +" " +user_age + '맞으신가요? ',
                         actions: [{
                             "type": "message",
                             "label": "예",
@@ -240,7 +240,7 @@ function onRequest(req, res) {
                     accountId: parsedBody.source.accountId,
                     content: {
                         type: 'button_template',
-                        contentText: '화이투벤은 감기의 제증상(콧물, 코막힘, 재채기, 인후통, 기침, 가래, 오한, 발열, 두통, 관절통, 근육통)\n 완화 효과를 기대할 수 있습니다.',
+                        contentText: '화이투벤의 주성분 중 클로르페니라민말레산염은 \n고초열, 두드러기, 가려움성 피부질환(습진,피부염, 피부가려움증, 약물발진), 알레르기 비염, 혈관운동성 \n코염, 코감기에 의한 재채기, 콧물, 혈관운동성 부기를 줄여주는데 효과가 있습니다.',
                         actions: [{
                             //defined input
                             "type": "message",
