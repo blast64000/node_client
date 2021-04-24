@@ -220,7 +220,7 @@ function onRequest(req, res) {
                         accountId: parsedBody.source.accountId,
                         content: {
                             type: 'button_template',
-                            contentText: '등록하신 약중에 화이투벤 씨플러스는 \n 가려움 증상에 완화에 도움이 됩니다 현재 보유중이신가요?',
+                            contentText: '등록하신 약중에 화이투벤 씨플러스는 가려움 증상에 완화에 도움이 됩니다 현재 보유중이신가요?',
 
                             actions: [{
                                 //defined input
@@ -240,7 +240,7 @@ function onRequest(req, res) {
                     accountId: parsedBody.source.accountId,
                     content: {
                         type: 'button_template',
-                        contentText: '화이투벤의 주성분 중 클로르페니라민말레산염은 \n고초열, 두드러기, 가려움성 피부질환(습진,피부염, 피부가려움증, 약물발진), 알레르기 비염, 혈관운동성 \n코염, 코감기에 의한 재채기, 콧물, 혈관운동성 부기를 줄여주는데 효과가 있습니다.',
+                        contentText: '화이투벤의 주성분 중 클로르페니라민말레산염은 고초열, 두드러기, 가려움성 피부질환(습진,피부염, 피부가려움증, 약물발진), 알레르기 비염, 혈관운동성 \n코염, 코감기에 의한 재채기, 콧물, 혈관운동성 부기를 줄여주는데 효과가 있습니다.',
                         actions: [{
                             //defined input
                             "type": "message",
