@@ -386,11 +386,11 @@ function onRequest(req, res) {
                 if (reqBody.content.postback === '경조사08n') {
                     my_string = "신청방법은 아래와 같습니다.\n* e-HR 접속 → 복리후생 → 카페포인트 → 경조금 신청 → 신청 클릭하여 신청하면 됩니다. (신청시 경사 및 조사 첨부파일 증빙 必)"
                     my_labelmsg = "확인"
-                    my_postback = "경조사08yf"
+                    my_postback = "경조사09y"
                 } else if (reqBody.content.postback === '경조사09n') {
                     my_string = "아래 프로세스 참고하여 신청해주시면 됩니다."
                     my_labelmsg = "확인"
-                    my_postback = "경조사09y"
+                    my_postback = "경조사08yf"
                 }
                 var reqBody = {
                     accountId: parsedBody.source.accountId,
