@@ -396,23 +396,12 @@ function onRequest(req, res) {
                     accountId: parsedBody.source.accountId,
                     content: {
                         type: 'button_template',
-                        contentText: "추가로 궁금하신 사항이 있으신가요?",
+                        contentText: my_string,
                         actions: [{
-                                "type": "message",
-                                "label": my_labelmsg,
-                                "postback": my_postback
-                            },
-                            {
-                                "type": "message",
-                                "label": "담당자 연락하기",
-                                "postback": "경조사03"
-                            },
-                            {
-                                "type": "message",
-                                "label": "초기메뉴로 돌아가기",
-                                "postback": "시작하기"
-                            }
-                        ]
+                            "type": "message",
+                            "label": my_labelmsg,
+                            "postback": my_postback
+                        }]
                     }
                 }
             } else if (reqBody.content.postback === '베어월드00') {
