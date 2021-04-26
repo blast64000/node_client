@@ -250,15 +250,15 @@ function onRequest(req, res) {
                         contentText: my_string,
                         actions: [{
                             "type": "message",
-                            "label": "경조금(위로금, 축하금) 신청 방법이 궁금합니다.",
+                            "label": "경조금 신청 방법.",
                             "postback": "경조사01"
                         }, {
                             "type": "message",
-                            "label": "경조사 물품 지원 신청 방법이 궁급합니다.",
+                            "label": "경조사 지원 물품 신청 방법",
                             "postback": "경조사01"
                         }, {
                             "type": "message",
-                            "label": "담당자가 궁금합니다.",
+                            "label": "담당자 연락처.",
                             "postback": "경조사01"
                         }]
                     }
