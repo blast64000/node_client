@@ -152,7 +152,7 @@ function onRequest(req, res) {
                             },
                             {
                                 "type": "message",
-                                "label": "리틀베어어린이집 \n 신청자격 및 기준이  \n 궁금합니다",
+                                "label": "리틀베어어린이집 신청자격이 궁금합니다",
                                 "postback": "어린이집00"
                             },
                             {
@@ -176,7 +176,7 @@ function onRequest(req, res) {
                         contentText: '복리후생 업무를 선택해 주세요',
                         actions: [{
                                 "type": "message",
-                                "label": "사내동호회는 기준이 궁급합니다.",
+                                "label": "사내동호회는 기준이 궁금합니다.",
                                 "postback": "동호회00"
                             },
                             {
