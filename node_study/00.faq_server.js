@@ -54,58 +54,12 @@ function onRequest(req, res) {
             }
 
 
-            if (reqBody.content.text === '시작하기') {
+            if (reqBody.content.text === '시작하기' || reqBody.content.text === '안녕?' || reqBody.content.postback === '시작하기') {
                 reqBody.content.text = '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다.';
                 url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push';
                 var reqBody = {
                     accountId: parsedBody.source.accountId,
                     postback: "",
-                    content: {
-                        type: 'button_template',
-                        contentText: '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다. 아래 메뉴에서 필요한 항목을 선택해주세요',
-                        actions: [{
-                            "type": "message",
-                            "label": "인사",
-                            "postback": "인사00"
-                        }, {
-                            "type": "message",
-                            "label": "복리후생",
-                            "postback": "복리후생00"
-                        }, {
-                            "type": "message",
-                            "label": "베어월드",
-                            "postback": "베어월드00"
-                        }]
-                    }
-                }
-            } else if (reqBody.content.text === '안녕?') {
-                reqBody.content.text = '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다.';
-                url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push';
-                var reqBody = {
-                    accountId: parsedBody.source.accountId,
-                    content: {
-                        type: 'button_template',
-                        contentText: '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다. 아래 메뉴에서 필요한 항목을 선택해주세요',
-                        actions: [{
-                            "type": "message",
-                            "label": "인사",
-                            "postback": "인사00"
-                        }, {
-                            "type": "message",
-                            "label": "복리후생",
-                            "postback": "복리후생00"
-                        }, {
-                            "type": "message",
-                            "label": "베어월드",
-                            "postback": "베어월드00"
-                        }]
-                    }
-                }
-            } else if (reqBody.content.postback === '시작하기') {
-                reqBody.content.text = '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다.';
-                url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push';
-                var reqBody = {
-                    accountId: parsedBody.source.accountId,
                     content: {
                         type: 'button_template',
                         contentText: '안녕하세요 회사생활관련 궁금한 부문을 찾아드리는 문의봇입니다. 아래 메뉴에서 필요한 항목을 선택해주세요',
@@ -179,31 +133,31 @@ function onRequest(req, res) {
                         contentText: '복리후생 업무 관련해 궁금하신 부분을 선택해 주세요',
                         actions: [{
                                 "type": "message",
-                                "label": "경조사",
+                                "label": "경조사 신청방법이 궁금합니다.",
                                 "postback": "경조사00"
                             }, {
                                 "type": "message",
-                                "label": "사내대출",
+                                "label": "사내대출 신청방법이 궁금합니다.",
                                 "postback": "사내대출00"
                             },
                             {
                                 "type": "message",
-                                "label": "카페포인트",
+                                "label": "카페포인트 지급 기준이 궁금합니다.",
                                 "postback": "카페포인트00"
                             },
                             {
                                 "type": "message",
-                                "label": "학자금지원",
+                                "label": "학자금 지원 기준이 궁금합니다.",
                                 "postback": "학자금00"
                             },
                             {
                                 "type": "message",
-                                "label": "리틀베어어린이집",
+                                "label": "리틀베어어린이집 \n 신청자격 및 기준이  \n 궁금합니다",
                                 "postback": "어린이집00"
                             },
                             {
                                 "type": "message",
-                                "label": "대웅지킴이",
+                                "label": "대웅지킴이는 이용방법이 궁금합니다.",
                                 "postback": "지킴이00"
                             },
                             {
@@ -222,47 +176,91 @@ function onRequest(req, res) {
                         contentText: '복리후생 업무 관련해 궁금하신 부분을 선택해 주세요',
                         actions: [{
                                 "type": "message",
-                                "label": "사내동호회",
+                                "label": "사내동호회는 기준이 궁급합니다.",
                                 "postback": "동호회00"
                             },
-
                             {
                                 "type": "message",
-                                "label": "셔틀버스",
+                                "label": "셔틀버스 이용방법이 궁금합니다.",
                                 "postback": "셔틀버스00"
                             },
                             {
                                 "type": "message",
-                                "label": "직원식당",
+                                "label": "직원식당 이용방법이 궁금합니다.",
                                 "postback": "직원식당00"
                             }, {
                                 "type": "message",
-                                "label": "콘도",
-                                "postback": "콘도00"
-                            }, {
-                                "type": "message",
-                                "label": "캡슐룸",
+                                "label": "캡슐룸 이용방법이 궁금합니다.",
                                 "postback": "캡슐룸00"
                             }, {
                                 "type": "message",
-                                "label": "부임여비",
+                                "label": "부임여비 기준이 궁금합니다.",
                                 "postback": "부임여비00"
-                            },
-
-                            {
+                            }, {
                                 "type": "message",
-                                "label": "리프레시",
+                                "label": "리프레시 제도 기준이 궁금합니다.",
                                 "postback": "리프레시00"
                             },
-
                             {
                                 "type": "message",
-                                "label": "생일축하",
+                                "label": "생일축하 지원금 기준이 궁금합니다.",
                                 "postback": "생일축하00"
                             },
-
-
                         ]
+                    }
+                }
+
+                //경조사
+            } else if (reqBody.content.postback === '경조사00') {
+                var reqBody = {
+                    accountId: parsedBody.source.accountId,
+                    content: {
+                        type: 'button_template',
+                        contentText: '경조사 관련 업무를 선택해주세요',
+                        actions: [{
+                            "type": "message",
+                            "label": "경조금(위로금, 축하금) 신청 방법이 궁금합니다.",
+                            "postback": "경조사01"
+                        }, {
+                            "type": "message",
+                            "label": "경조사 물품 지원 신청 방법이 궁급합니다.",
+                            "postback": "경조사02"
+                        }, {
+                            "type": "message",
+                            "label": "담당자가 궁금합니다.",
+                            "postback": "경조사03"
+                        }]
+                    }
+                }
+            } else if (reqBody.content.postback === '경조사01' || reqBody.content.postback === '경조사02' || reqBody.content.postback === '경조사03') {
+                my_string = ""
+                my_postback = ""
+                if (reqBody.content.postback === '경조사01') {
+                    my_string = "사우공제회비를 1회 이상 납부한 임직원이라면 누구나 경조금 신청이 가능합니다."
+                    my_postback = "경조사04"
+                } else if (reqBody.content.postback === '경조사02') {
+                    my_string = "경조사 물품 지원은 본인(대웅직원)을 기준으로 1촌 이내 가족에게 지원됩니다.\n(배우자는 무촌, 배우자부모 지원)\n※ 조부모,외조부모는 지원 대상이 아닙니다. "
+                } else if (reqBody.content.postback === '경조사03') {
+                    my_string = "경조금 담당자는 인사팀 이지연님입니다. (내선 : 8016)"
+                }
+                var reqBody = {
+                    accountId: parsedBody.source.accountId,
+                    content: {
+                        type: 'button_template',
+                        contentText: my_string,
+                        actions: [{
+                            "type": "message",
+                            "label": "경조금(위로금, 축하금) 신청 방법이 궁금합니다.",
+                            "postback": "경조사01"
+                        }, {
+                            "type": "message",
+                            "label": "경조사 물품 지원 신청 방법이 궁급합니다.",
+                            "postback": "경조사01"
+                        }, {
+                            "type": "message",
+                            "label": "담당자가 궁금합니다.",
+                            "postback": "경조사01"
+                        }]
                     }
                 }
             } else if (reqBody.content.postback === '베어월드00') {
