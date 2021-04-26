@@ -152,7 +152,7 @@ function onRequest(req, res) {
                             },
                             {
                                 "type": "message",
-                                "label": "리틀베어어린이집 신청자격이 궁금합니다",
+                                "label": "사내 어린이집 신청자격이 궁금합니다",
                                 "postback": "어린이집00"
                             },
                             {
