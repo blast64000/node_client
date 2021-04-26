@@ -219,7 +219,7 @@ function onRequest(req, res) {
                         contentText: '경조사 관련 업무를 선택해주세요',
                         actions: [{
                             "type": "message",
-                            "label": "경조금(위로금, 축하금) 신청 방법이 궁금합니다.",
+                            "label": "경조금 신청 방법이 궁금합니다.",
                             "postback": "경조사01"
                         }, {
                             "type": "message",
