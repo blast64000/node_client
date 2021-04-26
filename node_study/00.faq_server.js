@@ -219,11 +219,11 @@ function onRequest(req, res) {
                         contentText: '경조사 관련 업무를 선택해주세요',
                         actions: [{
                             "type": "message",
-                            "label": "경조금 신청 방법이 궁금합니다.",
+                            "label": "경조금 신청 방법",
                             "postback": "경조사01"
                         }, {
                             "type": "message",
-                            "label": "경조사 물품 지원 신청 방법이 궁급합니다.",
+                            "label": "경조사 물품 지원 신청 방법",
                             "postback": "경조사02"
                         }, {
                             "type": "message",
