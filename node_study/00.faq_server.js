@@ -347,11 +347,11 @@ function onRequest(req, res) {
                 my_postback = ""
                 if (reqBody.content.postback === '경조사08yf') {
                     my_string = ""
-                    my_labelmsg = "경조물품 신청방법"
+                    my_labelmsg = "경조금 신청방법"
                     my_postback = "경조사01"
                 } else if (reqBody.content.postback === '경조사09y') {
                     my_string = ""
-                    my_labelmsg = "경조금 신청방법"
+                    my_labelmsg = "경조물품 신청방법"
                     my_postback = "경조사02"
                 }
                 var reqBody = {
