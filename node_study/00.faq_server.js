@@ -173,7 +173,7 @@ function onRequest(req, res) {
                     accountId: parsedBody.source.accountId,
                     content: {
                         type: 'button_template',
-                        contentText: '복리후생 업무 관련해 궁금하신 부분을 선택해 주세요',
+                        contentText: '복리후생 업무를 선택해 주세요',
                         actions: [{
                                 "type": "message",
                                 "label": "사내동호회는 기준이 궁급합니다.",
