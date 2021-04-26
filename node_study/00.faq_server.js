@@ -399,7 +399,7 @@ function onRequest(req, res) {
                         contentText: "추가로 궁금하신 사항이 있으신가요?",
                         actions: [{
                                 "type": "message",
-                                "label": "my_labelmsg",
+                                "label": my_labelmsg,
                                 "postback": my_postback
                             },
                             {
