@@ -306,37 +306,113 @@ function onRequest(req, res) {
                         actions: [{
                             "type": "message",
                             "label": "네",
-                            "postback": my_postback
+                            "postback": my_postback + "y"
                         }, {
                             "type": "message",
                             "label": "아니오",
-                            "postback": my_postback
+                            "postback": my_postback + "n"
                         }]
                     }
                 }
-            } else if (reqBody.content.postback === '경조사04' || reqBody.content.postback === '경조사05') {
+            } else if (reqBody.content.postback === '경조사08y') {
                 my_string = ""
                 my_labelmsg = ""
                 my_postback = ""
-                if (reqBody.content.postback === '경조사04') {
-                    my_string = "경사는 행사 7일 이전, 조사는 발생일 1개월이내에 신청해야 하며, 기간내 신청 못하였을 경우 발생일로 부터 1년 내 신청 가능합니다 (경조휴가는 발생일 기준 사용)."
-                    my_labelmsg = "다음 페이지"
-                    my_postback = "경조사06"
-                } else if (reqBody.content.postback === '경조사05') {
-                    my_string = "경조사 지원대상 및 지원물품은 아래와 같습니다.\n1. 경사- 지원대상 : 본인, 자녀결혼\n - 지원물품 : 3단화한, 쌀화환(10만원 상당의 화훼류로 대체가능) \n 2. 조사 \n -지원대상 : 본인, 배우사, 부모, 배우자부모, 자녀 \n -지원물품 : 근조화한+경조용품 300인분 셋트 1BOX"
-                    my_labelmsg = "다음 페이지"
-                    my_postback = "경조사07"
+
+                var reqBody = {
+                    accountId: parsedBody.source.accountId,
+                    content: {
+                        type: 'button_template',
+                        contentText: "경조사에 따른 지원금액은 아래와 같습니다.",
+                        actions: [{
+                                "type": "uri",
+                                "label": "경조사지원금액",
+                                "uri": "https://drive.google.com/file/d/1-gmnkPxRrhz0PBb-7iLn17028pZs2FXX/view?usp=sharing"
+                            },
+                            {
+                                "type": "message",
+                                "label": "다음",
+                                "postback": "경조사08yf"
+                            }
+                        ]
+                    }
+                }
+            }
+
+
+            //경조사 y
+            else if (reqBody.content.postback === '경조사08yf' || reqBody.content.postback === '경조사09y') {
+                my_string = ""
+                my_labelmsg = ""
+                my_postback = ""
+                if (reqBody.content.postback === '경조사08yf') {
+                    my_string = ""
+                    my_labelmsg = "경조물품 신청방법"
+                    my_postback = "경조사01"
+                } else if (reqBody.content.postback === '경조사09y') {
+                    my_string = ""
+                    my_labelmsg = "경조금 신청방법"
+                    my_postback = "경조사02"
                 }
                 var reqBody = {
                     accountId: parsedBody.source.accountId,
                     content: {
                         type: 'button_template',
-                        contentText: my_string,
+                        contentText: "추가로 궁금하신 사항이 있으신가요?",
                         actions: [{
-                            "type": "message",
-                            "label": my_labelmsg,
-                            "postback": my_postback
-                        }]
+                                "type": "message",
+                                "label": "my_labelmsg",
+                                "postback": my_postback
+                            },
+                            {
+                                "type": "message",
+                                "label": "담당자 연락하기",
+                                "postback": "경조사03"
+                            },
+                            {
+                                "type": "message",
+                                "label": "초기메뉴로 돌아가기",
+                                "postback": "시작하기"
+                            }
+                        ]
+                    }
+                }
+            }
+            //경조사n
+            else if (reqBody.content.postback === '경조사08n' || reqBody.content.postback === '경조사09n') {
+                my_string = ""
+                my_labelmsg = ""
+                my_postback = ""
+                if (reqBody.content.postback === '경조사08n') {
+                    my_string = "신청방법은 아래와 같습니다.\n* e-HR 접속 → 복리후생 → 카페포인트 → 경조금 신청 → 신청 클릭하여 신청하면 됩니다. (신청시 경사 및 조사 첨부파일 증빙 必)"
+                    my_labelmsg = "확인"
+                    my_postback = "경조사08yf"
+                } else if (reqBody.content.postback === '경조사09n') {
+                    my_string = "아래 프로세스 참고하여 신청해주시면 됩니다."
+                    my_labelmsg = "확인"
+                    my_postback = "경조사09y"
+                }
+                var reqBody = {
+                    accountId: parsedBody.source.accountId,
+                    content: {
+                        type: 'button_template',
+                        contentText: "추가로 궁금하신 사항이 있으신가요?",
+                        actions: [{
+                                "type": "message",
+                                "label": "my_labelmsg",
+                                "postback": my_postback
+                            },
+                            {
+                                "type": "message",
+                                "label": "담당자 연락하기",
+                                "postback": "경조사03"
+                            },
+                            {
+                                "type": "message",
+                                "label": "초기메뉴로 돌아가기",
+                                "postback": "시작하기"
+                            }
+                        ]
                     }
                 }
             } else if (reqBody.content.postback === '베어월드00') {
