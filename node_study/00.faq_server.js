@@ -234,14 +234,20 @@ function onRequest(req, res) {
                 }
             } else if (reqBody.content.postback === '경조사01' || reqBody.content.postback === '경조사02' || reqBody.content.postback === '경조사03') {
                 my_string = ""
+                my_labelmsg = ""
                 my_postback = ""
                 if (reqBody.content.postback === '경조사01') {
                     my_string = "사우공제회비를 1회 이상 납부한 임직원이라면 누구나 경조금 신청이 가능합니다."
+                    my_labelmsg = "다음 페이지"
                     my_postback = "경조사04"
                 } else if (reqBody.content.postback === '경조사02') {
                     my_string = "경조사 물품 지원은 본인(대웅직원)을 기준으로 1촌 이내 가족에게 지원됩니다.\n(배우자는 무촌, 배우자부모 지원)\n※ 조부모,외조부모는 지원 대상이 아닙니다. "
+                    my_labelmsg = "다음 페이지"
+                    my_postback = "경조사05"
                 } else if (reqBody.content.postback === '경조사03') {
-                    my_string = "경조금 담당자는 인사팀 이지연님입니다. (내선 : 8016)"
+                    my_string = "경조금 담당자는 인사팀 이지연님입니다. (내선 : 8016)\n경조사 물품 지원 담당자는 총무팀 정광채님입니다. (02-2190-6938)"
+                    my_labelmsg = "처음으로"
+                    my_postback = "시작하기"
                 }
                 var reqBody = {
                     accountId: parsedBody.source.accountId,
@@ -250,16 +256,58 @@ function onRequest(req, res) {
                         contentText: my_string,
                         actions: [{
                             "type": "message",
-                            "label": "경조금 신청 방법.",
-                            "postback": "경조사01"
-                        }, {
+                            "label": my_labelmsg,
+                            "postback": my_postback
+                        }]
+                    }
+                }
+            } else if (reqBody.content.postback === '경조사04' || reqBody.content.postback === '경조사05') {
+                my_string = ""
+                my_labelmsg = ""
+                my_postback = ""
+                if (reqBody.content.postback === '경조사04') {
+                    my_string = "경사는 행사 7일 이전, 조사는 발생일 1개월이내에 신청해야 하며, 기간내 신청 못하였을 경우 발생일로 부터 1년 내 신청 가능합니다 (경조휴가는 발생일 기준 사용)."
+                    my_labelmsg = "다음 페이지"
+                    my_postback = "경조사06"
+                } else if (reqBody.content.postback === '경조사05') {
+                    my_string = "경조사 지원대상 및 지원물품은 아래와 같습니다.\n1. 경사- 지원대상 : 본인, 자녀결혼\n - 지원물품 : 3단화한, 쌀화환(10만원 상당의 화훼류로 대체가능) \n 2. 조사 \n -지원대상 : 본인, 배우사, 부모, 배우자부모, 자녀 \n -지원물품 : 근조화한+경조용품 300인분 셋트 1BOX"
+                    my_labelmsg = "다음 페이지"
+                    my_postback = "경조사07"
+                }
+                var reqBody = {
+                    accountId: parsedBody.source.accountId,
+                    content: {
+                        type: 'button_template',
+                        contentText: my_string,
+                        actions: [{
                             "type": "message",
-                            "label": "경조사 지원 물품 신청 방법",
-                            "postback": "경조사01"
-                        }, {
+                            "label": my_labelmsg,
+                            "postback": my_postback
+                        }]
+                    }
+                }
+            } else if (reqBody.content.postback === '경조사04' || reqBody.content.postback === '경조사05') {
+                my_string = ""
+                my_labelmsg = ""
+                my_postback = ""
+                if (reqBody.content.postback === '경조사04') {
+                    my_string = "경사는 행사 7일 이전, 조사는 발생일 1개월이내에 신청해야 하며, 기간내 신청 못하였을 경우 발생일로 부터 1년 내 신청 가능합니다 (경조휴가는 발생일 기준 사용)."
+                    my_labelmsg = "다음 페이지"
+                    my_postback = "경조사06"
+                } else if (reqBody.content.postback === '경조사05') {
+                    my_string = "경조사 지원대상 및 지원물품은 아래와 같습니다.\n1. 경사- 지원대상 : 본인, 자녀결혼\n - 지원물품 : 3단화한, 쌀화환(10만원 상당의 화훼류로 대체가능) \n 2. 조사 \n -지원대상 : 본인, 배우사, 부모, 배우자부모, 자녀 \n -지원물품 : 근조화한+경조용품 300인분 셋트 1BOX"
+                    my_labelmsg = "다음 페이지"
+                    my_postback = "경조사07"
+                }
+                var reqBody = {
+                    accountId: parsedBody.source.accountId,
+                    content: {
+                        type: 'button_template',
+                        contentText: my_string,
+                        actions: [{
                             "type": "message",
-                            "label": "담당자 연락처.",
-                            "postback": "경조사01"
+                            "label": my_labelmsg,
+                            "postback": my_postback
                         }]
                     }
                 }
