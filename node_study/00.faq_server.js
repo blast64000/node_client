@@ -275,13 +275,41 @@ function onRequest(req, res) {
                     my_postback = "경조사07"
                 }
                 var reqBody = {
+                        accountId: parsedBody.source.accountId,
+                        content: {
+                            type: 'button_template',
+                            contentText: my_string,
+                            actions: [{
+                                "type": "message",
+                                "label": my_labelmsg,
+                                "postback": my_postback
+                            }]
+                        }
+                    }
+                    //선택 분기 페이지
+            } else if (reqBody.content.postback === '경조사06' || reqBody.content.postback === '경조사07') {
+                my_string = ""
+                my_labelmsg = ""
+                my_postback = ""
+                if (reqBody.content.postback === '경조사06') {
+                    my_string = "경조금 신청하셨나요?"
+                    my_postback = "경조사08"
+                } else if (reqBody.content.postback === '경조사07') {
+                    my_string = "경조사 물품 신청하셨나요?"
+                    my_postback = "경조사09"
+                }
+                var reqBody = {
                     accountId: parsedBody.source.accountId,
                     content: {
                         type: 'button_template',
                         contentText: my_string,
                         actions: [{
                             "type": "message",
-                            "label": my_labelmsg,
+                            "label": "네",
+                            "postback": my_postback
+                        }, {
+                            "type": "message",
+                            "label": "아니오",
                             "postback": my_postback
                         }]
                     }
