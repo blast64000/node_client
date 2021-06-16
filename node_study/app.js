@@ -1,4 +1,4 @@
-var netconfig = require("./option");
+var netconfig = require("./option.js");
 
 var https = require("https");
 var request = require("../testapp/node_modules/request");
