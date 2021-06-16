@@ -152,12 +152,12 @@ function onRequest(req, res) {
                             },
                             {
                                 "type": "message",
-                                "label": "사내 어린이집 신청자격이 궁금합니다",
+                                "label": "사내 어린이집이 궁금합니다",
                                 "postback": "어린이집00"
                             },
                             {
                                 "type": "message",
-                                "label": "대웅지킴이는 이용방법이 궁금합니다.",
+                                "label": "대웅지킴이란?",
                                 "postback": "지킴이00"
                             },
                             {
@@ -387,6 +387,33 @@ function onRequest(req, res) {
                     my_string = "신청방법은 아래와 같습니다.\n* e-HR 접속 → 복리후생 → 카페포인트 → 경조금 신청 → 신청 클릭하여 신청하면 됩니다. (신청시 경사 및 조사 첨부파일 증빙 必)"
                     my_labelmsg = "확인"
                     my_postback = "경조사09y"
+                } else if (reqBody.content.postback === '경조사09n') {
+                    my_string = "아래 프로세스 참고하여 신청해주시면 됩니다."
+                    my_labelmsg = "확인"
+                    my_postback = "경조사08yf"
+                }
+                var reqBody = {
+                    accountId: parsedBody.source.accountId,
+                    content: {
+                        type: 'button_template',
+                        contentText: my_string,
+                        actions: [{
+                            "type": "message",
+                            "label": my_labelmsg,
+                            "postback": my_postback
+                        }]
+                    }
+                }
+            }
+            //사내대출
+            else if (reqBody.content.postback.includes('사내대출')) {
+                my_string = ""
+                my_labelmsg = ""
+                my_postback = ""
+                if (reqBody.content.postback === '사내대출00') {
+                    my_string = "근속 1년 이상 대웅/제약 임직원이라면 누구나 사내대출 신청이 가능합니다.\n ※ 근속기준 : 대웅/제약 입사 근속 기준 (그룹입사일X)"
+                    my_labelmsg = "다음"
+                    my_postback = "사내대출00"
                 } else if (reqBody.content.postback === '경조사09n') {
                     my_string = "아래 프로세스 참고하여 신청해주시면 됩니다."
                     my_labelmsg = "확인"
