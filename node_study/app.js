@@ -16,8 +16,8 @@ function onRequest(req, res) {
 
     }).on('end', () => {
         body = Buffer.concat(body).toString();
-
-        // inside condition
+        console.log(body)
+            // inside condition
         if (headers['user-agent'] === 'security') {
             var parsedBody = JSON.parse(body);
 
