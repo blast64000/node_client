@@ -13,3 +13,5 @@ const options = {
     cert: fs.readFileSync('/etc/letsencrypt/archive/herb-cookie.com/cert1.pem'),
     ca: fs.readFileSync('/etc/letsencrypt/archive/herb-cookie.com/chain1.pem')
 };
+
+exports.options = options;
