@@ -1,6 +1,7 @@
 var netconfig = require("./option");
+
 var https = require("https");
-var request = require("request");
+var request = require("../testapp/node_modules/request");
 
 function onRequest(req, res) {
     /* request part*/
