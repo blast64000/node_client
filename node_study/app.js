@@ -57,3 +57,4 @@ function onRequest(req, res) {
 
 https.createServer(netconfig.options, onRequest).listen(443);
 console.log('server has started.');
+console.log(netconfig.options)
