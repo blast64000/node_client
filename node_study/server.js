@@ -1,6 +1,6 @@
 var fs = require("fs")
 var https = require("https");
-var url_link = '';
+var url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push';
 const request = require('../testapp/node_modules/request');
 
 const options = {
