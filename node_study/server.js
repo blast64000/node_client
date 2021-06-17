@@ -406,7 +406,7 @@ function onRequest(req, res) {
                 }
             }
             //사내대출
-            else if (reqBody.content.postback.includes('사내대출')) {
+            else if (reqBody.content.postback === '사내대출') {
                 my_string = ""
                 my_labelmsg = ""
                 my_postback = ""
