@@ -1,0 +1,15 @@
+fs.js:646
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/etc/letsencrypt/archive/herb-cookie.com/privkey1.pem'
+    at Object.fs.openSync (fs.js:646:18)
+    at Object.fs.readFileSync (fs.js:551:33)
+    at Object.<anonymous> (/home/ubuntu/node_client/node_study/00.faq_server.js:15:13)
+    at Module._compile (module.js:652:30)
+    at Object.Module._extensions..js (module.js:663:10)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+    at Function.Module._load (module.js:497:3)
+    at Function.Module.runMain (module.js:693:10)
+    at startup (bootstrap_node.js:188:16)
