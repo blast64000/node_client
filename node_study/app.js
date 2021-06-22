@@ -30,8 +30,8 @@ async function asyncFunction() {
             qinfo += botMaster[iter].BOT_CD
             qinfo += ','
         };
-        qinfo[-1] = ')';
-        console.log(qinfo);
+        qinfo += ')'
+        console.log(qinfo.slice(1, -2));
 
         // 해당하는 봇번호만 추출하여 컨텐츠 긁어오기 
         const contentMaster = conn.query("select * from chatbot.cont_ms_tb");
