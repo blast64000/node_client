@@ -25,7 +25,7 @@ async function asyncFunction() {
         const botMaster = await conn.query(`select * from chatbot.bot_ms_tb where BOT_USE_ST=1`);
         var iter;
         var qinfo = "CONT_BOT_COD IN (";
-        for (iter = 0; i < botMaster.length - 1; i++) {
+        for (iter = 0; iter < botMaster.length - 1; iter++) {
             qinfo += botMaster[i].BOT_CD
         };
         qinfo += ')';
