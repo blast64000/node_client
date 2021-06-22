@@ -28,7 +28,7 @@ async function asyncFunction() {
     } finally {
         if (conn) {
             conn.end()
-            return rows
+            return rows;
         };
     }
 }
