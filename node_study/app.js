@@ -3,6 +3,7 @@ var https = require("https");
 var request = require("../testapp/node_modules/request");
 const mariadb = require('mariadb');
 const async = require('async');
+const { Console } = require("console");
 
 
 //1. maria-db 로드
@@ -22,11 +23,18 @@ async function asyncFunction() {
 
         // 활성화된 봇 리스트를 긁어옴
         const botMaster = await conn.query(`select * from chatbot.bot_ms_tb where BOT_USE_ST=1`);
-        console.log(botMaster[0]);
+        var iter;
+        var qinfo = "CONT_BOT_COD IN (";
+        for (iter = 0; i < botMaster.length - 1; i++) {
+            qinfo += botMaster[i].BOT_CD
+        };
+        qinfo += ')';
+        console.log(qinfo);
+
+        // 해당하는 봇번호만 추출하여 컨텐츠 긁어오기 
         const contentMaster = conn.query("select * from chatbot.cont_ms_tb");
+        // 해당하는 set 번호가 잇는 추출하여 컨텐츠 긁어오기 
         const actionMaster = conn.query("select * from chatbot.cont_ms_tb");
-
-
 
 
     } catch (err) {
@@ -40,10 +48,9 @@ async function asyncFunction() {
 
 //1. bot 리스트 읽기
 asyncFunction()
-    //2. for 문 돌면서 
+    //2. 링크드 리스트 생성 
+    //3. 순회 테스트 시작
 
-//2. 링크드 리스트 생성 
-//3. 
 
 
 function onRequest(req, res) {
