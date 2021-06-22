@@ -1,13 +1,49 @@
-var netconfig = require("./option.js");
-
+var conf = require("./option.js");
 var https = require("https");
 var request = require("../testapp/node_modules/request");
+
+
+
+//1. maria-db 로드
+
+const mariadb = require('mariadb');
+const pool = mariadb.createPool({
+    host: '35.172.136.88',
+    user: 'chatbot',
+    password: 'carbon14',
+    connectionLimit: 5
+});
+
+async function asyncFunction() {
+    let conn;
+    try {
+        conn = await pool.getConnection();
+        const rows = await conn.query('select 1 as val');
+        console.log(rows);
+        const res = await conn.query("select * from chatbot.bot_ms_tb");
+        console.log(res);
+
+    } catch (err) {
+        throw err;
+    } finally {
+        if (conn) return conn.end();
+    }
+
+
+}
+
+asyncFunction()
+    // write status db 
+    //2. 링크드 리스트 생성 
+    //3. 
+
 
 function onRequest(req, res) {
     /* request part*/
     const { headers, method, url } = req;
     let body = [];
 
+    //data read part
     req.on('error', (err) => {
         console.error(err);
 
@@ -17,10 +53,11 @@ function onRequest(req, res) {
     }).on('end', () => {
         body = Buffer.concat(body).toString();
         console.log(body)
-            // inside condition
-        if (headers['user-agent'] === 'security') {
-            var parsedBody = JSON.parse(body);
 
+        if (headers['user-agent'] === 'security') {
+
+            //parse_text
+            var parsedBody = JSON.parse(body);
             var reqBody = {
                 accountId: parsedBody.source.accountId,
                 content: {
@@ -31,23 +68,24 @@ function onRequest(req, res) {
 
             }
 
+            //1. find_linked_point 
+            //2. db write
+            //3. on-request 
             request({
-                method: 'post',
-                url: url_link,
-                json: reqBody,
-                headers: {
-                    'Content-Type': 'application/json; charset=utf-8',
-                    consumerKey: 'BHOjH7zxMnPPqXwycpf8',
-                    Authorization: 'Bearer AAABB5y5YRGNHB8mRM8MzF2pfzpYLBDEMuTVmTt8NaHk8QYWtaKE3EsDtl/awNK+a2o6A/WTKrAIaSAUkn7MSzEGMAEXy2LCFxHCCKiAlYp/B+JeHD/jQEKSgEHYo2NrZiCXr3mvnHC7IDmUtZB3CWd6Rwwm5BKgadtnJih5u1f/ISjdsPCqrulVEgnqpflDiUlS3upaz3AjGtQOoRYjY0+TWD078vWpJoONPiH68I/Z6LdEOq2X89NYtO8nav0Kq3xjIC3fHFqnskA8nd+Qq3PdcX044ANG5cnKwknYDBigwKHC8cl8vn2Ptk2jqtt8sCOOiHzw1F+zvC1I/2qzc1dS2FuDsxQ8UpsEraV9+k1olRLq'
-                }
-            }, function(err, response, body) {
-                if (err) {
-                    console.log('========= enter error ========.');
-                    console.error(err);
-                } else {
-                    console.info(body);
-                }
-            })
+                    method: 'post',
+                    url: conf.options.url,
+                    json: reqBody,
+                    headers: conf.options.headers
+                },
+
+                function(err, response, body) {
+                    if (err) {
+                        console.log('========= enter error ========.');
+                        console.error(err);
+                    } else {
+                        console.info(body);
+                    }
+                })
         } else {
             console.log("other ip comes in");
         }
@@ -55,6 +93,6 @@ function onRequest(req, res) {
     });
 }
 
-https.createServer(netconfig.options, onRequest).listen(443);
+https.createServer(conf.options, onRequest).listen(443);
 console.log('server has started.');
-console.log(netconfig.options.url)
+console.log(conf.options.url)
