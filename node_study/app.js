@@ -22,7 +22,7 @@ async function asyncFunction() {
 
         // 활성화된 봇 리스트를 긁어옴
         const botMaster = await conn.query(`select * from chatbot.bot_ms_tb where BOT_USE_ST=1`);
-        console.log(botMaster);
+        console.log(botMaster[0]);
         const contentMaster = conn.query("select * from chatbot.cont_ms_tb");
         const actionMaster = conn.query("select * from chatbot.cont_ms_tb");
 
