@@ -25,12 +25,12 @@ async function asyncFunction() {
         const botMaster = await conn.query(`select * from chatbot.bot_ms_tb where BOT_USE_ST=1`);
         var iter;
         var qinfo = "CONT_BOT_CD IN (";
-        console.log(botMaster.length)
+
         for (iter = 0; iter < botMaster.length; iter++) {
             qinfo += botMaster[iter].BOT_CD
             qinfo += ','
         };
-        qinfo += ')';
+        qinfo[-1] = ')';
         console.log(qinfo);
 
         // 해당하는 봇번호만 추출하여 컨텐츠 긁어오기 
