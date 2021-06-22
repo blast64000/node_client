@@ -13,6 +13,7 @@ const pool = mariadb.createPool({
     connectionLimit: 5
 });
 
+//2. 링크드 리스트 생성 
 async function asyncFunction() {
     let conn;
     try {
@@ -30,10 +31,9 @@ async function asyncFunction() {
             return rows
         };
     }
-} //2. 링크드 리스트 생성 
-
-
-//3. 
+}
+asyncFunction()
+    //3. 
 
 
 function onRequest(req, res) {
