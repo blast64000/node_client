@@ -1,12 +1,11 @@
 var conf = require("./option.js");
 var https = require("https");
 var request = require("../testapp/node_modules/request");
-
+const mariadb = require('mariadb');
+const async = require('async');
 
 
 //1. maria-db 로드
-
-const mariadb = require('mariadb');
 const pool = mariadb.createPool({
     host: '35.172.136.88',
     user: 'chatbot',
@@ -19,23 +18,21 @@ async function asyncFunction() {
     try {
         conn = await pool.getConnection();
         const rows = await conn.query('select 1 as val');
-        console.log(rows);
+        //console.log(rows);
         const res = await conn.query("select * from chatbot.cont_ms_tb");
-        console.log(res);
+        //console.log(res);
 
     } catch (err) {
         throw err;
     } finally {
         if (conn) return conn.end();
     }
-
-
 }
-
-asyncFunction()
-    // write status db 
+console.log(asyncFunction())
     //2. 링크드 리스트 생성 
-    //3. 
+
+
+//3. 
 
 
 function onRequest(req, res) {
