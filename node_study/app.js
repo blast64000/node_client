@@ -25,11 +25,12 @@ async function asyncFunction() {
     } catch (err) {
         throw err;
     } finally {
-        if (conn) return conn.end();
+        if (conn) {
+            conn.end()
+            return rows
+        };
     }
-}
-console.log(asyncFunction())
-    //2. 링크드 리스트 생성 
+} //2. 링크드 리스트 생성 
 
 
 //3. 
