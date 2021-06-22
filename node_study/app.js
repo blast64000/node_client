@@ -13,15 +13,7 @@ const pool = mariadb.createPool({
     connectionLimit: 5
 });
 
-var dbload_info = {
-    accountId: parsedBody.source.accountId,
-    content: {
-        type: parsedBody.content.type,
-        text: parsedBody.content.text,
-        postback: parsedBody.content.postback
-    },
-
-}
+var dbload_info = {}
 
 async function asyncFunction() {
     let conn;
