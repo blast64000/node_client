@@ -20,7 +20,7 @@ async function asyncFunction() {
         conn = await pool.getConnection();
         const rows = await conn.query('select 1 as val');
         console.log(rows);
-        const res = await conn.query("select * from chatbot.bot_ms_tb");
+        const res = await conn.query("select * from chatbot.cont_ms_tb");
         console.log(res);
 
     } catch (err) {
