@@ -26,7 +26,7 @@ async function asyncFunction() {
         var iter;
         var qinfo = "CONT_BOT_COD IN (";
         for (iter = 0; iter < botMaster.length - 1; iter++) {
-            qinfo += botMaster[i].BOT_CD
+            qinfo += botMaster[iter].BOT_CD
         };
         qinfo += ')';
         console.log(qinfo);
