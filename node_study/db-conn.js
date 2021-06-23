@@ -10,11 +10,12 @@ const pool = mariadb.createPool({
 
 var makeClause = function(colName, objName, dataArray) {
     var iter;
-    var returnClause;
+    var returnClause = "";
     returnClause += colName;
-    returnClause += 'IN (';
+    returnClause += ' IN (';
 
     for (iter = 0; iter < dataArray.length; iter++) {
+        console.log(dataArray[iter].objName)
         returnClause += dataArray[iter].objName;
         returnClause += ',';
     };
@@ -22,6 +23,7 @@ var makeClause = function(colName, objName, dataArray) {
     returnClause += ')';
     return returnClause;
 };
+makeClause('CONT_BOT_CD', 'BOT_CD', botMaster)
 
 
 async function asyncFunction() {
