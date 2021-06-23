@@ -15,15 +15,13 @@ const pool = mariadb.createPool({
 
 //1. bot 리스트 읽기
 let masterResource = dbconn.readMasterTable().then(function(data) {
-console.log(masterResource[0]);
-console.log(masterResource[1]);
-console.log(masterResource[2]);
-https.createServer(conf.options, onRequest).listen(443);
+    console.log(masterResource[0]);
+    console.log(masterResource[1]);
+    console.log(masterResource[2]);
+    https.createServer(conf.options, onRequest).listen(443);
 
-})
+});
 
-
-)
 
 
 //2. 링크드 리스트 생성 
