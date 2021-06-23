@@ -31,7 +31,7 @@ async function asyncFunction() {
             qinfo += ','
         };
 
-        qinfo = qinfo.slice(1, -2);
+        qinfo = qinfo.slice(0, -2);
         qinfo += ')';
         console.log(qinfo);
 
