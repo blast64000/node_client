@@ -27,7 +27,7 @@ var makeClause = function(colName, memberName, dataArray) {
 };
 
 
-async function readMasterTable() {
+exports.readMasterTable = async function() {
     let conn;
     try {
         conn = await pool.getConnection();
@@ -49,5 +49,3 @@ async function readMasterTable() {
 
     return [botMaster, contentMaster, actionMaster];
 }
-
-export default readMasterTable();
