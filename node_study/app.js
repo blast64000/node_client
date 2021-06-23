@@ -23,6 +23,8 @@ async function asyncFunction() {
 
         // 활성화된 봇 리스트를 긁어옴
         const botMaster = await conn.query(`select * from chatbot.bot_ms_tb where BOT_USE_ST=1`);
+
+        //bot CD ITERATION CONDITION
         var iter;
         var qinfo = "CONT_BOT_CD IN (";
 
@@ -30,16 +32,31 @@ async function asyncFunction() {
             qinfo += botMaster[iter].BOT_CD
             qinfo += ','
         };
-
         qinfo = qinfo.slice(0, -2);
         qinfo += ')';
         console.log(qinfo);
 
         // 해당하는 봇번호만 추출하여 컨텐츠 긁어오기 
         const contentMaster = await conn.query(`select * from chatbot.cont_ms_tb where ${qinfo}`);
+        //const of the start
+
+        //CONT CODE ITERATION CONDITION
+        var iter_;
+        var qinfo2 = "ACT_SET_CD IN (";
+        for (iter_ = 0; iter_ < contentMaster.length; iter_++) {
+            qinfo2 += contentMaster[iter].cont
+        };
+        qinfo2 = qinfo2.slice(0, -2);
+        qinfo2 += ')';
+        console.log(qinfo2);
+
+
+
+
         console.log(contentMaster);
         // 해당하는 set 번호가 잇는 추출하여 컨텐츠 긁어오기 
         const actionMaster = conn.query("select * from chatbot.cont_ms_tb");
+
 
 
     } catch (err) {
