@@ -8,19 +8,19 @@ const pool = mariadb.createPool({
     connectionLimit: 5
 });
 
-var makeClause = function(colName, objName, dataArray) {
+var makeClause = function(colName, memberName, dataArray) {
     var iter;
     var returnClause = "";
     returnClause += colName;
     returnClause += ' IN (';
 
     for (iter = 0; iter < dataArray.length; iter++) {
-        console.log(dataArray[iter][objName])
-        returnClause += dataArray[iter][objName];
+        returnClause += dataArray[iter][memberName];
         returnClause += ',';
     };
     returnClause = returnClause.slice(0, -1);
     returnClause += ')';
+    console.log(returnClause)
     return returnClause;
 };
 //makeClause('CONT_BOT_CD', 'BOT_CD', botMaster)
@@ -35,13 +35,9 @@ async function asyncFunction() {
         const botMaster = await conn.query(`select * from chatbot.bot_ms_tb where BOT_USE_ST=1`);
 
         // 해당하는 봇번호만 추출하여 컨텐츠 긁어오기 
-        console.log(makeClause('CONT_BOT_CD', 'BOT_CD', botMaster))
         const contentMaster = await conn.query(`select * from chatbot.cont_ms_tb where ${makeClause('CONT_BOT_CD', 'BOT_CD', botMaster)}`);
-
-        console.log(makeClause('CONT_ACT_SET_CD', 'CONT_ACT_SET_CD', contentMaster));
         // 해당하는 set 번호가 잇는 추출하여 액션 긁어오기 
-        const actionMaster = await conn.query(`select * from chatbot.act_ms_tb where  ${makeClause('CONT_ACT_SET_CD', 'CONT_ACT_SET_CD', contentMaster)}`);
-        console.log(actionMaster);
+        const actionMaster = await conn.query(`select * from chatbot.act_ms_tb where  ${makeClause('ACT_SET_CD', 'CONT_ACT_SET_CD', contentMaster)}`);
     } catch (err) {
         throw err;
     } finally {
