@@ -14,8 +14,10 @@ const pool = mariadb.createPool({
 });
 
 //1. bot 리스트 읽기
-console.log(dbconn.readMasterTable())
-
+let masterResource = dbconn.readMasterTable()
+console.log(masterResource[0]);
+console.log(masterResource[1]);
+console.log(masterResource[2]);
 //2. 링크드 리스트 생성 
 //3. 순회 테스트 시작
 
