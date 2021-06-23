@@ -15,8 +15,8 @@ var makeClause = function(colName, objName, dataArray) {
     returnClause += ' IN (';
 
     for (iter = 0; iter < dataArray.length; iter++) {
-        console.log(dataArray[iter].objName)
-        returnClause += dataArray[iter].objName;
+        console.log(dataArray[iter][objName])
+        returnClause += dataArray[iter][objName];
         returnClause += ',';
     };
     returnClause = returnClause.slice(0, -1);
