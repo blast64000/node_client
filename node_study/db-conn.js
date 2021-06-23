@@ -8,7 +8,7 @@ const pool = mariadb.createPool({
     connectionLimit: 5
 });
 
-var makeClause = function(colName, memberName, dataArray) {
+let makeClause = function(colName, memberName, dataArray) {
     var iter;
     var returnClause = "";
     returnClause += colName;

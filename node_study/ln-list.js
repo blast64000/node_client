@@ -1,42 +1,51 @@
 //https://boycoding.tistory.com/33
 
-var Node = function(data) {
-    this.data = data
-    this.next = null;
+let contNode = class {
+    constructor(data) {
+        this.contCode = data.CONT_CD;
+        this.contType = data.CONT_TYPE;
+        this.contText = data.CONT_TXT;
+        this.contActionSet = [];
+    }
 }
 
-var LinkedList = function() {
-    var _length = 0;
-    var _head = null;
-}
+let botLinkedList = class {
+    constructor(data) {
+        this.botCode = data.BOT_CD;
+        this.botName = data.BOT_NM;
+        this.botEntryPointer = data.contentNode; //contNode type
+    }
 
-LinkedList.prototype.append = function(data) {
-    var node = new Node(data);
-    var curr;
+    append(data) {
+        var node = new Node(data);
+        var curr;
 
-    if (this._head == null) {
-        this._head = node;
-    } else {
-        curr = this._head;
+        if (this._head == null) {
+            this._head = node;
+        } else {
+            curr = this._head;
 
-        while (curr.next) {
+            while (curr.next) {
+                curr = curr.next;
+            }
+            curr.next = node;
+
+        }
+        this._length++;
+    }
+
+    removeAt(data) {}
+
+    indexOf(data) {
+        var curr = this._head,
+            index = -1;
+        while (curr) {
+            if (curr.data === data) {
+                return index;
+            }
+            index++;
             curr = curr.next;
         }
-        curr.next = node;
-
+        return -1;
     }
-    this._length++;
-};
-LinkedList.prototype.removeAt = function(data) {};
-LinkedList.prototype.indexOf = function(data) {
-    var curr = this._head,
-        index = -1;
-    while (curr) {
-        if (curr.data === data) {
-            return index;
-        }
-        index++;
-        curr = curr.next;
-    }
-    return -1;
-};
+}

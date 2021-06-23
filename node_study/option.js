@@ -1,6 +1,6 @@
 var fs = require("fs")
 
-const options = {
+exports.options = {
     url: 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/persistentmenu',
     push_url: 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push',
 
@@ -13,5 +13,3 @@ const options = {
     cert: fs.readFileSync('/etc/letsencrypt/archive/herb-cookie.com/cert1.pem'),
     ca: fs.readFileSync('/etc/letsencrypt/archive/herb-cookie.com/chain1.pem')
 };
-
-exports.options = options;
