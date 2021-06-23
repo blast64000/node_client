@@ -36,7 +36,7 @@ async function asyncFunction() {
         console.log(qinfo);
 
         // 해당하는 봇번호만 추출하여 컨텐츠 긁어오기 
-        const contentMaster = conn.query(`select * from chatbot.cont_ms_tb where ${qinfo}`);
+        const contentMaster = await conn.query(`select * from chatbot.cont_ms_tb where ${qinfo}`);
         console.log(contentMaster);
         // 해당하는 set 번호가 잇는 추출하여 컨텐츠 긁어오기 
         const actionMaster = conn.query("select * from chatbot.cont_ms_tb");
