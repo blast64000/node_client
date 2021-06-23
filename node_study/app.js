@@ -42,7 +42,7 @@ async function asyncFunction() {
 
         //CONT CODE ITERATION CONDITION
         var iter_;
-        var qinfo2 = "ACT_SET_CD IN (";
+        var qinfo2 = "CONT_ACT_SET_CD IN (";
         for (iter_ = 0; iter_ < contentMaster.length; iter_++) {
             qinfo2 += contentMaster[iter].CONT_ACT_SET_CD
         };
