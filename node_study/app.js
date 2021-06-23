@@ -45,7 +45,7 @@ async function asyncFunction() {
         var qinfo2 = "CONT_ACT_SET_CD IN (";
         for (iter_ = 0; iter_ < contentMaster.length; iter_++) {
             qinfo2 += contentMaster[iter_].CONT_ACT_SET_CD;
-            qinfo += ',';
+            qinfo2 += ',';
         };
         qinfo2 = qinfo2.slice(0, -2);
         qinfo2 += ')';
