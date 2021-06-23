@@ -16,7 +16,7 @@ const pool = mariadb.createPool({
 //1. bot 리스트 읽기
 let masterResource = dbconn.readMasterTable().then(function(data) {
     var hi = masterResource[0];
-    var bi2 = masterResource[1];
+    var hi2 = masterResource[1];
     console.log(hi);
     console.log(hi2);
     https.createServer(conf.options, onRequest).listen(443);
