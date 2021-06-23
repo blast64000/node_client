@@ -39,7 +39,7 @@ async function asyncFunction() {
         const contentMaster = await conn.query(`select * from chatbot.cont_ms_tb where ${makeClause('CONT_BOT_CD', 'BOT_CD', botMaster)}`);
         console.log(contentMaster);
         // 해당하는 set 번호가 잇는 추출하여 액션 긁어오기 
-        const actionMaster = await conn.query(`select * from chatbot.cont_ms_tb where  ${makeClause('CONT_ACT_SET_CD', 'CONT_ACT_SET_CD', contentMaster)}`);
+        const actionMaster = await conn.query(`select * from chatbot.act_ms_tb where  ${makeClause('CONT_ACT_SET_CD', 'CONT_ACT_SET_CD', contentMaster)}`);
         console.log(actionMaster);
     } catch (err) {
         throw err;
