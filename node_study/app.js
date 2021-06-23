@@ -39,8 +39,8 @@ async function asyncFunction() {
         // 해당하는 봇번호만 추출하여 컨텐츠 긁어오기 
         const contentMaster = await conn.query(`select * from chatbot.cont_ms_tb where ${qinfo}`);
         //const of the start
-
-        //CONT CODE ITERATION CONDITION
+        console.log(contentMaster)
+            //CONT CODE ITERATION CONDITION
         var iter_;
         var qinfo2 = "CONT_ACT_SET_CD IN (";
         for (iter_ = 0; iter_ < contentMaster.length; iter_++) {
