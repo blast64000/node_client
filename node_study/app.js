@@ -3,7 +3,6 @@ var https = require("https");
 var request = require("../testapp/node_modules/request");
 const mariadb = require('mariadb');
 const async = require('async');
-const { Console } = require("console");
 
 
 //1. maria-db 로드
@@ -57,8 +56,6 @@ async function asyncFunction() {
 
         // 해당하는 set 번호가 잇는 추출하여 액션 긁어오기 
         const actionMaster = conn.query("select * from chatbot.cont_ms_tb");
-
-
 
     } catch (err) {
         throw err;
