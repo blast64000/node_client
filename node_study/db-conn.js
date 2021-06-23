@@ -23,7 +23,7 @@ var makeClause = function(colName, objName, dataArray) {
     returnClause += ')';
     return returnClause;
 };
-makeClause('CONT_BOT_CD', 'BOT_CD', botMaster)
+//makeClause('CONT_BOT_CD', 'BOT_CD', botMaster)
 
 
 async function asyncFunction() {
