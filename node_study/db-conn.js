@@ -15,7 +15,9 @@ var makeClause = function(colName, memberName, dataArray) {
     returnClause += ' IN (';
 
     for (iter = 0; iter < dataArray.length; iter++) {
+        returnClause += '\'';
         returnClause += dataArray[iter][memberName];
+        returnClause += '\'';
         returnClause += ',';
     };
     returnClause = returnClause.slice(0, -1);
