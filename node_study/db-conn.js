@@ -20,9 +20,7 @@ var makeClause = function(colName, objName, dataArray) {
     };
     returnClause = returnClause.slice(0, -1);
     returnClause += ')';
-
-    console.log(returnClause)
-
+    return returnClause;
 };
 
 
