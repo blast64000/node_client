@@ -50,4 +50,4 @@ async function readMasterTable() {
     return [botMaster, contentMaster, actionMaster];
 }
 
-export default readMasterTable;
+export default readMasterTable();
