@@ -32,6 +32,7 @@ async function asyncFunction() {
             qinfo += botMaster[iter].BOT_CD
             qinfo += ','
         };
+        console.log(qinfo);
         qinfo = qinfo.slice(0, -2);
         qinfo += ')';
         console.log(qinfo);
@@ -47,7 +48,8 @@ async function asyncFunction() {
             qinfo2 += contentMaster[iter_].CONT_ACT_SET_CD;
             qinfo2 += ',';
         };
-        qinfo2 = qinfo2.slice(0, -2);
+        console.log(qinfo2);
+        qinfo2 = qinfo2.slice(0, -1);
         qinfo2 += ')';
         console.log(qinfo2);
         console.log(contentMaster);
