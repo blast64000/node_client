@@ -33,7 +33,7 @@ async function asyncFunction() {
             qinfo += ','
         };
         console.log(qinfo);
-        qinfo = qinfo.slice(0, -2);
+        qinfo = qinfo.slice(0, -1);
         qinfo += ')';
         console.log(qinfo);
 
@@ -55,7 +55,7 @@ async function asyncFunction() {
         console.log(contentMaster);
 
 
-        // 해당하는 set 번호가 잇는 추출하여 컨텐츠 긁어오기 
+        // 해당하는 set 번호가 잇는 추출하여 액션 긁어오기 
         const actionMaster = conn.query("select * from chatbot.cont_ms_tb");
 
 
