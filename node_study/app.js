@@ -3,7 +3,7 @@ var https = require("https");
 var request = require("../testapp/node_modules/request");
 const mariadb = require('mariadb');
 const async = require('async');
-
+const dbconn = require("./db-conn.js");
 
 //1. maria-db 로드
 const pool = mariadb.createPool({
@@ -13,63 +13,11 @@ const pool = mariadb.createPool({
     connectionLimit: 5
 });
 
-var dbload_info = {}
-
-async function asyncFunction() {
-    let conn;
-    try {
-        conn = await pool.getConnection();
-
-        // 활성화된 봇 리스트를 긁어옴
-        const botMaster = await conn.query(`select * from chatbot.bot_ms_tb where BOT_USE_ST=1`);
-
-        //bot CD ITERATION CONDITION
-        var iter;
-        var qinfo = "CONT_BOT_CD IN (";
-
-        for (iter = 0; iter < botMaster.length; iter++) {
-            qinfo += botMaster[iter].BOT_CD
-            qinfo += ','
-        };
-        console.log(qinfo);
-        qinfo = qinfo.slice(0, -1);
-        qinfo += ')';
-        console.log(qinfo);
-
-        // 해당하는 봇번호만 추출하여 컨텐츠 긁어오기 
-        const contentMaster = await conn.query(`select * from chatbot.cont_ms_tb where ${qinfo}`);
-        //const of the start
-        console.log(contentMaster)
-            //CONT CODE ITERATION CONDITION
-        var iter_;
-        var qinfo2 = "CONT_ACT_SET_CD IN (";
-        for (iter_ = 0; iter_ < contentMaster.length; iter_++) {
-            qinfo2 += contentMaster[iter_].CONT_ACT_SET_CD;
-            qinfo2 += ',';
-        };
-        console.log(qinfo2);
-        qinfo2 = qinfo2.slice(0, -1);
-        qinfo2 += ')';
-        console.log(qinfo2);
-        console.log(contentMaster);
-
-
-        // 해당하는 set 번호가 잇는 추출하여 액션 긁어오기 
-        const actionMaster = conn.query("select * from chatbot.cont_ms_tb");
-
-    } catch (err) {
-        throw err;
-    } finally {
-        if (conn) {
-            conn.end()
-        };
-    }
-}
-
 //1. bot 리스트 읽기
-asyncFunction()
-    //2. 링크드 리스트 생성 
-    //3. 순회 테스트 시작
+console.log(dbconn.readMasterTable())
+
+//2. 링크드 리스트 생성 
+//3. 순회 테스트 시작
 
 
 

@@ -25,10 +25,9 @@ var makeClause = function(colName, memberName, dataArray) {
     console.log(returnClause)
     return returnClause;
 };
-//makeClause('CONT_BOT_CD', 'BOT_CD', botMaster)
 
 
-async function asyncFunction() {
+async function readMasterTable() {
     let conn;
     try {
         conn = await pool.getConnection();
@@ -47,6 +46,6 @@ async function asyncFunction() {
             conn.end()
         };
     }
-}
 
-asyncFunction()
+    return [botMaster, contentMaster, actionMaster];
+}
