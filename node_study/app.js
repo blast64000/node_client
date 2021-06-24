@@ -22,8 +22,8 @@ const pool = mariadb.createPool({
 //1. bot 리스트 읽기
 dbconn.readMasterTable().then(function(data) {
     // 봇 리스트
-    chatBotList = data[0];
-    contentList = data[1];
+    chatBotList = data[0].slice(0, data[0].length);
+    contentList = data[1].slice(0, data[1].length);
     console.log(chatBotList);
     console.log(contentList);
 
