@@ -1,4 +1,5 @@
 const mariadb = require('mariadb');
+//const async = require('async');
 
 //1. maria-db 로드
 const pool = mariadb.createPool({

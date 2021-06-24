@@ -1,6 +1,6 @@
 //https://boycoding.tistory.com/33
 
-let contNode = class {
+let ContNode = class {
     constructor(data) {
         this.contCode = data.CONT_CD;
         this.contType = data.CONT_TYPE;
@@ -9,43 +9,39 @@ let contNode = class {
     }
 }
 
-let botLinkedList = class {
+let ActNode = class {
     constructor(data) {
-        this.botCode = data.BOT_CD;
-        this.botName = data.BOT_NM;
-        this.botEntryPointer = data.contentNode; //contNode type
+        this.actCode = data.ACT_CD;
+        this.actSetCode = data.ACT_SET_CD;
+        this.actType = data.ACT_TYPE;
+        this.actName = data.ACT_NM;
+        this.nextContCode = data.ACT_CONT_CD;
+    }
+}
+
+let BotLinkedList = class {
+    constructor(listInit) {
+        this.botCode = listInit.BOT_CD;
+        this.botName = listInit.BOT_NM;
+        this.botContentList = [];
+        //this.botEntryPointer = listInit.entryNode;
     }
 
-    append(data) {
-        var node = new Node(data);
-        var curr;
+    initContentArray(contentList, actionList) {
 
-        if (this._head == null) {
-            this._head = node;
-        } else {
-            curr = this._head;
+        for (i = 0; i < contentList.length; i++) {
 
-            while (curr.next) {
-                curr = curr.next;
+            this.botContentList[i] = new ContNode(contentList.content);
+
+
+            for (j = 0; j < this.actionList.length; j++) {
+
+                if (this.botContentList[i].contCode === actionList[j].nextContCode)
+                    this.botContentList[i].contActionSet.append(actionList[j]);
             }
-            curr.next = node;
-
         }
-        this._length++;
     }
-
     removeAt(data) {}
+    indexOf(data) {}
 
-    indexOf(data) {
-        var curr = this._head,
-            index = -1;
-        while (curr) {
-            if (curr.data === data) {
-                return index;
-            }
-            index++;
-            curr = curr.next;
-        }
-        return -1;
-    }
 }

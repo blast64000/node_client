@@ -1,9 +1,15 @@
-var conf = require("./option.js");
-var https = require("https");
-var request = require("../testapp/node_modules/request");
+const https = require("https");
+const request = require("../testapp/node_modules/request");
 const mariadb = require('mariadb');
-const async = require('async');
+
+const conf = require("./option.js");
 const dbconn = require("./db-conn.js");
+const lklist = require("./ln-list.js")
+
+let chatbotList = null;
+let botContentList = null;
+let actionList = null;
+
 
 //1. maria-db 로드
 const pool = mariadb.createPool({
@@ -16,17 +22,17 @@ const pool = mariadb.createPool({
 //1. bot 리스트 읽기
 dbconn.readMasterTable().then(function(data) {
     //2. 링크드 리스트 생성 
+    console.log(data[0]);
+    console.log(data[1]);
+    console.log(data[2]);
 
 
     https.createServer(conf.options, onRequest).listen(443);
-
 });
 
 
 
 //3. 순회 테스트 시작
-
-
 
 function onRequest(req, res) {
     /* request part*/
