@@ -23,8 +23,8 @@ const pool = mariadb.createPool({
 dbconn.readMasterTable().then(function(data) {
     //2. 링크드 리스트 생성 
     console.log(data[0].length);
-    console.log(data[1]);
-    console.log(data[2]);
+    //console.log(data[1]);
+    //console.log(data[2]);
 
 
     https.createServer(conf.options, onRequest).listen(443);
