@@ -6,8 +6,8 @@ const conf = require("./option.js");
 const dbconn = require("./db-conn.js");
 const lklist = require("./ln-list.js")
 
-let chatbotList = [];
-let botContentList = null;
+let chatBotList = [];
+let contentList = [];
 let actionList = null;
 
 
@@ -21,10 +21,12 @@ const pool = mariadb.createPool({
 
 //1. bot 리스트 읽기
 dbconn.readMasterTable().then(function(data) {
-    //2. 링크드 리스트 생성 
-    console.log(data[0].meta);
-    // chatbotList = data[0].slice(0, data[0].length);
-    // console.log(chatbotList);
+    // 봇 리스트
+    chatBotList = data[0];
+    contentList = data[1];
+    console.log(chatBotList);
+    console.log(contentList);
+
 
     https.createServer(conf.options, onRequest).listen(443);
 });
