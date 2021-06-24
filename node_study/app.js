@@ -23,7 +23,7 @@ const pool = mariadb.createPool({
 dbconn.readMasterTable().then(function(data) {
     //2. 링크드 리스트 생성 
 
-    chatbotList = data[0].slice(1, data[0].length + 1);
+    chatbotList = data[0].slice(0, data[0].length);
     console.log(chatbotList);
 
     https.createServer(conf.options, onRequest).listen(443);
