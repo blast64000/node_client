@@ -4,12 +4,16 @@ const mariadb = require('mariadb');
 
 const conf = require("./option.js");
 const dbconn = require("./db-conn.js");
-const lklist = require("./ln-list.js")
-let cd = {
+const lklist = require("./ln-list.js");
+
+
+let masterData = {
     chatBotList: [],
     contentList: [],
     actionList: []
 };
+
+let botInstanceList = [];
 
 
 //1. maria-db 로드
@@ -22,12 +26,15 @@ const pool = mariadb.createPool({
 
 //1. bot 리스트 읽기
 dbconn.readMasterTable().then(function(data) {
-    // 봇 리스트
-    cd.chatBotList = data[0].slice(0, data[0].length);
-    cd.contentList = data[1].slice(0, data[1].length);
-    cd.actionList = data[2].slice(0, data[1].length);
+    masterData.chatBotList = data[0].slice(0, data[0].length);
+    masterData.contentList = data[1].slice(0, data[1].length);
+    masterData.actionList = data[2].slice(0, data[1].length);
 
-    console.log(cd);
+    console.log(chatBotList)
+    for (i = 0; i < masterData.chatBotList.length; i++) {
+        botInstanceList[i] = new BotLinkedList(masterData.chatBotList);
+
+    }
 
     https.createServer(conf.options, onRequest).listen(443);
 });

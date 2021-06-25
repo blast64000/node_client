@@ -20,11 +20,11 @@ let ActNode = class {
 }
 
 let BotLinkedList = class {
-    constructor(listInit) {
-        this.botCode = listInit.BOT_CD;
-        this.botName = listInit.BOT_NM;
+    constructor(chatBotList) {
+        this.botCode = chatBotList.BOT_CD;
+        this.botName = chatBotList.BOT_NM;
         this.botContentList = [];
-        //this.botEntryPointer = listInit.entryNode;
+        //this.botEntryPointer = chatBotList.entryNode;
     }
 
     initContentArray(contentList, actionList) {
