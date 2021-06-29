@@ -50,7 +50,6 @@ let BotNode = class {
         this.botName = chatBotList.BOT_NM;
         this.botStartCode = chatBotList.BOT_CONT_CD;
         this.botStartNode = null;
-        this.botContentList = [];
     }
 
     appendEntryPoint(contentList) {
@@ -67,20 +66,6 @@ let BotNode = class {
         }
     };
 
-    initContentArray(contentList, actionList) {
-
-        for (i = 0; i < contentList.length; i++) {
-
-            this.botContentList[i] = new ContNode(contentList.content);
-
-
-            for (j = 0; j < this.actionList.length; j++) {
-
-                if (this.botContentList[i].contCode === actionList[j].nextContCode)
-                    this.botContentList[i].contActionSet.append(actionList[j]);
-            }
-        }
-    }
     removeAt(data) {}
     indexOf(data) {}
 
