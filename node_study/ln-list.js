@@ -10,7 +10,7 @@ let ContNode = class {
         for (i = 0; i < actionList.length; i++) {
 
             if (this.contActSetCode === actionList[i].actSetCode) {
-                this.contActionSet = this.contActionSet.push(actionList[i]);
+                this.contActionSet.push(actionList[i]);
             } else {
                 continue;
             }
