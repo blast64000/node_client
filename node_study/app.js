@@ -38,10 +38,10 @@ dbconn.readMasterTable().then(function(data) {
         console.log("1.====init ActionNode config ==== ");
     }
 
-    for (i = 0; i < masterData.contentList.length; i++) {
-        console.log(i);
-        contentInstList[i] = new lklist.ContNode(masterData.contentList[i]);
-        contentInstList[i].appendActionSet(actionInstList);
+    for (t = 0; t < masterData.contentList.length; t++) {
+        console.log(t);
+        contentInstList[t] = new lklist.ContNode(masterData.contentList[t]);
+        contentInstList[t].appendActionSet(actionInstList);
         console.log("2.====init ContNode config ==== ");
     }
 
