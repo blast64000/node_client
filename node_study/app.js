@@ -1,7 +1,6 @@
 const https = require("https");
 const request = require("../testapp/node_modules/request");
 const mariadb = require('mariadb');
-
 const conf = require("./option.js");
 const dbconn = require("./db-conn.js");
 const lklist = require("./ln-list.js");
@@ -24,29 +23,28 @@ const pool = mariadb.createPool({
     connectionLimit: 5
 });
 
-//1. bot 리스트 읽기
 dbconn.readMasterTable().then(function(data) {
     masterData.chatBotList = data[0].slice(0, data[0].length);
     masterData.contentList = data[1].slice(0, data[1].length);
-    masterData.actionList = data[2].slice(0, data[1].length);
+    masterData.actionList = data[2].slice(0, data[2].length);
 
-    //2. 자료구조 저장
+
+    for (k = 0; k < masterData.actionList.length; k++) {
+        actionInstList[k] = new lklist.ActNode(masterData.actionList[k]);
+    }
+
     for (i = 0; i < masterData.contentList.length; i++) {
         contentInstList[i] = new lklist.ContNode(masterData.contentList[i]);
+        contentInstList[i].appendActionSet(masterData.actionList);
+        console.log("1.====init ContNode config ==== ");
     }
 
     for (j = 0; j < masterData.chatBotList.length; j++) {
         botInstList[j] = new lklist.BotNode(masterData.chatBotList[j]);
         botInstList[j].appendEntryPoint(contentInstList);
+        console.log("2.====init BotNode config ==== ");
     }
 
-    for (k = 0; k < masterData.actionList.length; k++) {
-        actionInstList[k] = new lklist.ActNode(masterData.actionList[k]);
-    }
-    botInstList[0].botStartNode.contText = "컨텐츠 변경 테스트"
-    console.log(contentInstList)
-    console.log(botInstList)
-    console.log(actionInstList)
 
 
     https.createServer(conf.options, onRequest).listen(443);

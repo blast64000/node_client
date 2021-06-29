@@ -3,8 +3,19 @@ let ContNode = class {
         this.contCode = data.CONT_CD;
         this.contType = data.CONT_TYPE;
         this.contText = data.CONT_TXT;
+        this.contActSetCode = data.CONT_ACT_SET_CD;
         this.contActionSet = [];
     }
+    appendActionSet(actionList) {
+        for (i = 0; i < actionList.length; i++) {
+            if (this.contActSetCode === actionList[i].actSetCode) {
+                this.contActionSet.push(actionList[i]);
+            } else {
+                continue;
+            }
+        }
+    }
+
 }
 
 let ActNode = class {
@@ -24,7 +35,6 @@ let BotNode = class {
         this.botStartCode = chatBotList.BOT_CONT_CD;
         this.botStartNode = null;
         this.botContentList = [];
-
     }
 
     appendEntryPoint(contentList) {
