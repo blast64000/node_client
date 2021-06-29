@@ -32,12 +32,12 @@ dbconn.readMasterTable().then(function(data) {
 
     //2. 자료구조 저장
     for (i = 0; i < masterData.contentList.length; i++) {
-        contentInstList[j] = new ContNode(masterData.contentList[i]);
+        contentInstList[i] = new ContNode(masterData.contentList[i]);
     }
 
     for (j = 0; j < masterData.chatBotList.length; j++) {
-        botInstList[i] = new BotNode(masterData.chatBotList[j]);
-        botInstList[i].appendEntryPoint(contentInstList);
+        botInstList[j] = new BotNode(masterData.chatBotList[j]);
+        botInstList[j].appendEntryPoint(contentInstList);
     }
 
     for (k = 0; k < masterData.actionList.length; k++) {
