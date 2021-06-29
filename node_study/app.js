@@ -39,7 +39,7 @@ dbconn.readMasterTable().then(function(data) {
     }
 
     for (i = 0; i < masterData.contentList.length; i++) {
-
+        console.log(i);
         contentInstList[i] = new lklist.ContNode(masterData.contentList[i]);
         contentInstList[i].appendActionSet(actionInstList);
         console.log("2.====init ContNode config ==== ");
