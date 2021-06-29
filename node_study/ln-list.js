@@ -8,7 +8,7 @@ let ContNode = class {
     }
     appendActionSet(actionList) {
         for (i = 0; i < actionList.length; i++) {
-
+            console.log(actionList);
             console.log("CONT_ACT_SET_CD:" + this.contActSetCode);
             console.log("actionList:" + actionList[i].actSetCode);
 
