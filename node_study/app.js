@@ -6,15 +6,15 @@ const conf = require("./option.js");
 const dbconn = require("./db-conn.js");
 const lklist = require("./ln-list.js");
 
-
 let masterData = {
     chatBotList: [],
     contentList: [],
     actionList: []
 };
 
-let botInstanceList = [];
-
+let botInstList = [];
+let contentInstList = [];
+let actionInstList = [];
 
 //1. maria-db 로드
 const pool = mariadb.createPool({
@@ -30,17 +30,26 @@ dbconn.readMasterTable().then(function(data) {
     masterData.contentList = data[1].slice(0, data[1].length);
     masterData.actionList = data[2].slice(0, data[1].length);
 
-    console.log(chatBotList)
-    for (i = 0; i < masterData.chatBotList.length; i++) {
-        botInstanceList[i] = new BotLinkedList(masterData.chatBotList);
-
+    //2. 자료구조 저장
+    for (i = 0; i < masterData.contentList.length; i++) {
+        contentInstList[j] = new ContNode(masterData.contentList[i]);
     }
+
+    for (j = 0; j < masterData.chatBotList.length; j++) {
+        botInstList[i] = new BotNode(masterData.chatBotList[j]);
+        botInstList[i].appendEntryPoint(contentInstList);
+    }
+
+    for (k = 0; k < masterData.actionList.length; k++) {
+        actionInstList[k] = new ActNode(masterData.actionList[k]);
+    }
+    console.log(contentInstList)
+    console.log(botInstList)
+    console.log(actionInstList)
+
 
     https.createServer(conf.options, onRequest).listen(443);
 });
-
-
-//3. 순회 테스트 시작
 
 function onRequest(req, res) {
     /* request part*/

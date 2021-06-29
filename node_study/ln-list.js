@@ -19,13 +19,29 @@ let ActNode = class {
     }
 }
 
-let BotLinkedList = class {
+let BotNode = class {
     constructor(chatBotList) {
         this.botCode = chatBotList.BOT_CD;
         this.botName = chatBotList.BOT_NM;
+        this.botStartCode = chatBotList.BOT_CONT_CD;
+        this.botStartNode = null;
         this.botContentList = [];
-        //this.botEntryPointer = chatBotList.entryNode;
+
     }
+
+    appendEntryPoint(contentList) {
+        for (i = 0; i < contentList.length; i++) {
+            if (this.botStartCode === contentList[i].contCode) {
+                this.botStartNode = contentList[i]
+                return 1;
+
+            } else {
+                //error 
+                return -1;
+
+            }
+        }
+    };
 
     initContentArray(contentList, actionList) {
 
