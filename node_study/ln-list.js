@@ -1,5 +1,3 @@
-module.exports = { ContNode, ActNode, BotNode };
-
 let ContNode = class {
     constructor(data) {
         this.contCode = data.CONT_CD;
@@ -61,3 +59,5 @@ let BotNode = class {
     indexOf(data) {}
 
 }
+
+module.exports = { ContNode, ActNode, BotNode };
