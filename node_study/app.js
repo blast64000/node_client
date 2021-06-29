@@ -27,8 +27,8 @@ dbconn.readMasterTable().then(function(data) {
     masterData.chatBotList = data[0].slice(0, data[0].length);
     masterData.contentList = data[1].slice(0, data[1].length);
     masterData.actionList = data[2].slice(0, data[2].length);
-
-    console.log(masterData.contentList)
+    console.log("====master content check=====");
+    console.log(masterData.contentList);
 
     for (k = 0; k < masterData.actionList.length; k++) {
         actionInstList[k] = new lklist.ActNode(masterData.actionList[k]);
