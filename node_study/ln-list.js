@@ -7,7 +7,7 @@ let ContNode = class {
         this.contActionSet = [];
     }
     appendActionSet(actionList) {
-        for (i = 0; i < actionList.length; i++) {
+        for (let i = 0; i < actionList.length; i++) {
 
             if (this.contActSetCode === actionList[i].actSetCode) {
                 this.contActionSet.push(actionList[i]);
