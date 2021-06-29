@@ -23,7 +23,6 @@ let makeClause = function(colName, memberName, dataArray) {
     };
     returnClause = returnClause.slice(0, -1);
     returnClause += ')';
-    console.log(returnClause)
     return returnClause;
 };
 

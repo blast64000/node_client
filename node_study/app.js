@@ -43,6 +43,7 @@ dbconn.readMasterTable().then(function(data) {
     for (k = 0; k < masterData.actionList.length; k++) {
         actionInstList[k] = new lklist.ActNode(masterData.actionList[k]);
     }
+    botInstList[0].botStartNode.contText = "컨텐츠 변경 테스트"
     console.log(contentInstList)
     console.log(botInstList)
     console.log(actionInstList)
