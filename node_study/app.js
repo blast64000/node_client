@@ -47,7 +47,7 @@ dbconn.readMasterTable().then(function(data) {
 
     for (x = 0; x < masterData.actionList.length; x++) {
         console.log("4.====init Action NextNode config ==== ");
-        actionInstList[k].appendNextCont(contentInstList);
+        actionInstList[x].appendNextCont(contentInstList);
     }
 
     console.log(botInstList);
