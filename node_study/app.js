@@ -27,8 +27,11 @@ dbconn.readMasterTable().then(function(data) {
     masterData.chatBotList = data[0].slice(0, data[0].length);
     masterData.contentList = data[1].slice(0, data[1].length);
     masterData.actionList = data[2].slice(0, data[2].length);
-    console.log("====master content check=====");
-    console.log(masterData.contentList);
+
+
+    console.log("★" + masterData.actionList.length)
+    console.log("★" + masterData.contentList.length)
+    console.log("★" + masterData.chatBotList.length)
 
     for (k = 0; k < masterData.actionList.length; k++) {
         actionInstList[k] = new lklist.ActNode(masterData.actionList[k]);
@@ -36,6 +39,7 @@ dbconn.readMasterTable().then(function(data) {
     }
 
     for (i = 0; i < masterData.contentList.length; i++) {
+
         contentInstList[i] = new lklist.ContNode(masterData.contentList[i]);
         contentInstList[i].appendActionSet(actionInstList);
         console.log("2.====init ContNode config ==== ");
