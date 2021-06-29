@@ -1,5 +1,4 @@
-export { ContNode, ActNode, BotNode }
-
+module.exports = { ContNode, ActNode, BotNode };
 
 let ContNode = class {
     constructor(data) {
