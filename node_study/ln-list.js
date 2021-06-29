@@ -25,7 +25,7 @@ let ActNode = class {
         this.actSetCode = data.ACT_SET_CD;
         this.actType = data.ACT_TYPE;
         this.actName = data.ACT_NM;
-        this.nextContCode = data.ACT_CONT_CD;
+        this.nextContCode = data.act_cont_cd;
         this.nextNode = null;
     }
     appendNextCont(contentList) {
