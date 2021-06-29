@@ -45,6 +45,9 @@ dbconn.readMasterTable().then(function(data) {
         console.log("2.====init BotNode config ==== ");
     }
 
+    console.log(botInstList);
+    console.log(contentInstList);
+    console.log(actionInstList);
 
 
     https.createServer(conf.options, onRequest).listen(443);
