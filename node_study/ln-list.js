@@ -8,8 +8,12 @@ let ContNode = class {
     }
     appendActionSet(actionList) {
         for (i = 0; i < actionList.length; i++) {
+
+            console.log("CONT_ACT_SET_CD:" + this.contActSetCode);
+            console.log("actionList:" + actionList[i].actSetCode);
+
             if (this.contActSetCode === actionList[i].actSetCode) {
-                this.contActionSet.push(actionList[i]);
+                this.contActionSet = this.contActionSet.push(actionList[i]);
             } else {
                 continue;
             }
