@@ -26,6 +26,21 @@ let ActNode = class {
         this.actType = data.ACT_TYPE;
         this.actName = data.ACT_NM;
         this.nextContCode = data.ACT_CONT_CD;
+        this.nextNode = null;
+    }
+    appendNextCont(contentList) {
+        for (i = 0; i < contentList.length; i++) {
+            if (this.nextContCode === contentList[i].contCode) {
+                this.nextNode = contentList[i]
+                return 1;
+            } else {
+                //error 
+                continue;
+            }
+
+        }
+
+
     }
 }
 

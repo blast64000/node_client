@@ -28,27 +28,31 @@ dbconn.readMasterTable().then(function(data) {
     masterData.contentList = data[1].slice(0, data[1].length);
     masterData.actionList = data[2].slice(0, data[2].length);
 
-
     for (k = 0; k < masterData.actionList.length; k++) {
         actionInstList[k] = new lklist.ActNode(masterData.actionList[k]);
+        console.log("1.====init ActionNode config ==== ");
     }
 
     for (i = 0; i < masterData.contentList.length; i++) {
         contentInstList[i] = new lklist.ContNode(masterData.contentList[i]);
         contentInstList[i].appendActionSet(actionInstList);
-        console.log("1.====init ContNode config ==== ");
+        console.log("2.====init ContNode config ==== ");
     }
 
     for (j = 0; j < masterData.chatBotList.length; j++) {
         botInstList[j] = new lklist.BotNode(masterData.chatBotList[j]);
         botInstList[j].appendEntryPoint(contentInstList);
-        console.log("2.====init BotNode config ==== ");
+        console.log("3.====init BotNode config ==== ");
+    }
+
+    for (x = 0; x < masterData.actionList.length; x++) {
+        console.log("4.====init Action NextNode config ==== ");
+        actionInstList[k].appendNextCont(contentInstList);
     }
 
     console.log(botInstList);
     console.log(contentInstList);
     console.log(actionInstList);
-
 
     https.createServer(conf.options, onRequest).listen(443);
 });
