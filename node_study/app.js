@@ -33,8 +33,8 @@ dbconn.readMasterTable().then(function(data) {
     console.log("★" + masterData.contentList.length)
     console.log("★" + masterData.chatBotList.length)
 
-    for (k = 0; k < masterData.actionList.length; k++) {
-        actionInstList[k] = new lklist.ActNode(masterData.actionList[k]);
+    for (let i of masterData.actionList) {
+        actionInstList.push(new lklist.ActNode(i));
         console.log("1.====init ActionNode config ==== ");
     }
 
