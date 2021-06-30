@@ -55,7 +55,7 @@ let BotNode = class {
     }
 
     appendEntryPoint(contentList) {
-        for (i = 0; i < contentList.length; i++) {
+        for (let i = 0; i < contentList.length; i++) {
             if (this.botStartCode === contentList[i].contCode) {
                 this.botStartNode = contentList[i]
                 return 1;
