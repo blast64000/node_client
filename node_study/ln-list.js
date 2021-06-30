@@ -29,7 +29,7 @@ let ActNode = class {
         this.nextNode = null;
     }
     appendNextCont(contentList) {
-        for (i = 0; i < contentList.length; i++) {
+        for (let i = 0; i < contentList.length; i++) {
             console.log(this.nextContCode);
             console.log(contentList[i].contCode);
             if (this.nextContCode === contentList[i].contCode) {
