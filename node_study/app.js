@@ -112,7 +112,9 @@ let onRequest = function(req, res) {
             console.log("postback:" + reqBody.content.postback);
             // { ContentCode, content.type, instace_message } = postback 
             let reqContent = findCurrCont(reqBody.content.postback, contentInstList);
+            console.log(reqContent);
             if (reqContent) {
+
                 reqBody.content.type = reqContent.contType;
                 reqBody.content.contentText = null;
                 reqBody.content.actions = makeActionJson(reqContent.contActionSet);
