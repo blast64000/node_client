@@ -116,8 +116,12 @@ let onRequest = function(req, res) {
                 reqBody.content.type = reqContent.contType;
                 reqBody.content.contentText = null;
                 reqBody.content.actions = makeActionJson(reqContent.contActionSet);
+                //postback이 없을경우
+            } else if (reqContent === undefined) {
+                console.log("postback 없음");
+
             } else {
-                //ERROR : content does not exist.
+
             }
             //2. db write
 
