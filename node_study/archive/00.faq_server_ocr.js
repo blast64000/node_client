@@ -132,7 +132,7 @@ function onRequest(req, res) {
                     postback: "",
                     content: {
                         type: 'button_template',
-                        contentText: "["+gender +" " +user_age + ']\n맞으신가요? ',
+                        contentText: "[" + gender + " " + user_age + ']\n맞으신가요? ',
                         actions: [{
                             "type": "message",
                             "label": "예",

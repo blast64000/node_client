@@ -15,6 +15,7 @@ let botInstList = [];
 let contentInstList = [];
 let actionInstList = [];
 
+
 //1. maria-db 로드
 const pool = mariadb.createPool({
     host: '35.172.136.88',
@@ -29,42 +30,58 @@ dbconn.readMasterTable().then(function(data) {
     masterData.actionList = data[2].slice(0, data[2].length);
 
 
-    console.log("★" + masterData.actionList.length)
-    console.log("★" + masterData.contentList.length)
-    console.log("★" + masterData.chatBotList.length)
-
+    console.log("1.====init ActionNode config ==== ");
     for (let i of masterData.actionList) {
         actionInstList.push(new lklist.ActNode(i));
-        console.log("1.====init ActionNode config ==== ");
     }
 
-    for (t = 0; t < masterData.contentList.length; t++) {
+    console.log("2.====init ContNode config ==== ");
+    for (let t = 0; t < masterData.contentList.length; t++) {
         console.log(t);
         contentInstList[t] = new lklist.ContNode(masterData.contentList[t]);
         contentInstList[t].appendActionSet(actionInstList);
-        console.log("2.====init ContNode config ==== ");
     }
 
-    for (j = 0; j < masterData.chatBotList.length; j++) {
+    console.log("3.====init BotNode config ==== ");
+    for (let j = 0; j < masterData.chatBotList.length; j++) {
         botInstList[j] = new lklist.BotNode(masterData.chatBotList[j]);
 
         botInstList[j].appendEntryPoint(contentInstList);
-        console.log("3.====init BotNode config ==== ");
     }
-
-    for (x = 0; x < masterData.actionList.length; x++) {
-        console.log("4.====init Action NextNode config ==== ");
+    console.log("4.====init Action NextNode config ==== ");
+    for (let x = 0; x < masterData.actionList.length; x++) {
         actionInstList[x].appendNextCont(contentInstList);
     }
-
-    console.log(botInstList);
-    console.log(contentInstList);
-    console.log(actionInstList);
-
+    console.log("5.====activate server config ==== ");
     https.createServer(conf.options, onRequest).listen(443);
 });
+W
 
-function onRequest(req, res) {
+
+let findCurrCont = function(postback, conList) {
+    for (let i of conList) {
+        if (postback === i.contCode) {
+            return i;
+        } else {
+            return null;
+        }
+    }
+
+};
+let makeActionJson = function(actionSetData) {
+    let retArray = [];
+    for (let i of actionSetData) {
+        let actions = {
+            type: i.type,
+            label: i.actName,
+            postback: i.netContCode
+        };
+        retArray.push(actions);
+    }
+    return retArray;
+};
+
+let onRequest = function(req, res) {
     /* request part*/
     const { headers, method, url } = req;
     let body = [];
@@ -82,21 +99,31 @@ function onRequest(req, res) {
 
         if (headers['user-agent'] === 'security') {
 
-            //parse_text
-            var parsedBody = JSON.parse(body);
-            var reqBody = {
-                accountId: parsedBody.source.accountId,
-                content: {
-                    type: parsedBody.content.type,
-                    text: parsedBody.content.text,
-                    postback: parsedBody.content.postback
-                },
-
+            //insert parse_text function
+            let parsedBody = JSON.parse(body);
+            let reqBody = {
+                    accountId: parsedBody.source.accountId,
+                    content: {
+                        type: parsedBody.content.type,
+                        text: parsedBody.content.text,
+                        postback: parsedBody.content.postback,
+                        actions: []
+                    },
+                }
+                // { ContentCode, content.type, instace_message } = postback 
+            let reqContent = findCurrCont(reqBody.content.postback);
+            if (reqContent) {
+                reqBody.content.type = reqContent.contType;
+                reqBody.content.contentText = null;
+                reqBody.content.actions = makeActionJson(reqContent.contActionSet);
+            } else {
+                //ERROR : content does not exist.
             }
-
-            //1. find_linked_point 
             //2. db write
+
+
             //3. on-request 
+
             request({
                     method: 'post',
                     url: conf.options.url,
