@@ -117,7 +117,7 @@ let onRequest = function(req, res) {
                 reqBody.content.contentText = null;
                 reqBody.content.actions = makeActionJson(reqContent.contActionSet);
             } else if (reqContent.content.text === undefined) {
-                postback만 있을경우
+                //postback만 있을경우
             } else {
 
             }
