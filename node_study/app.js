@@ -110,7 +110,7 @@ let onRequest = function(req, res) {
                     },
                 }
                 // { ContentCode, content.type, instace_message } = postback 
-            let reqContent = findCurrCont(reqBody.content.postback);
+            let reqContent = findCurrCont(reqBody.content.postback, contentInstList);
             if (reqContent) {
                 reqBody.content.type = reqContent.contType;
                 reqBody.content.contentText = null;
