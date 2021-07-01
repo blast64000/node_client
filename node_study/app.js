@@ -111,17 +111,13 @@ let onRequest = function(req, res) {
             }
             console.log("postback:" + reqBody.content.postback);
             // { ContentCode, content.type, instace_message } = postback 
-            let reqContent = findCurrCont(reqBody.content.postback, contentInstList);
-            console.log(reqContent);
-            if (reqContent) {
-
+            if (reqBody.content.postback === undefined) {
+                let reqContent = findCurrCont(reqBody.content.postback, contentInstList);
                 reqBody.content.type = reqContent.contType;
                 reqBody.content.contentText = null;
                 reqBody.content.actions = makeActionJson(reqContent.contActionSet);
-                //postback이 없을경우
-            } else if (reqContent === undefined) {
-                console.log("postback 없음");
-
+            } else if (reqContent.content.text === undefined) {
+                postback만 있을경우
             } else {
 
             }
