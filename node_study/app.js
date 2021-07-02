@@ -111,17 +111,21 @@ let onRequest = function(req, res) {
             }
             console.log("postback:" + reqBody.content.postback);
             // { ContentCode, content.type, instace_message } = postback 
+
             if (reqBody.content.postback === undefined) {
+                let reqContent = findEnterCont()
+
+            } else if (reqContent.content.text === undefined) {
                 let reqContent = findCurrCont(reqBody.content.postback, contentInstList);
                 reqBody.content.type = reqContent.contType;
                 reqBody.content.contentText = null;
                 reqBody.content.actions = makeActionJson(reqContent.contActionSet);
-            } else if (reqContent.content.text === undefined) {
                 //postback만 있을경우
             } else {
 
             }
             //2. db write
+
 
 
             //3. on-request 
