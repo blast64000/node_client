@@ -55,7 +55,7 @@ function onRequest(req, res) {
 
 
             if (reqBody.content.text === '시작하기' || reqBody.content.text === '안녕?' || reqBody.content.postback === '시작하기') {
-                reqBody.content.text = '[행정처분안내]\n 업체명 : 일동제약 \n 처분일자 : 2021-06-25\n 위반내용 : ○ 의약품 ‘다온정’<제5234호>에 대하여 ‘해당 품목 광고업무정지 1개월’(2021. 3. 19. ~ 2021. 4. 18.)의 행정처분을 받았으나, 업무정지기간에 해당 품목을 광고한 사실이 있음\n 처분사항 : ○ 해당 품목 허가취소(2021. 7. 9.자) ';
+                reqBody.content.text = '\[행정처분안내\]\n 업체명 : 일동제약 \n 처분일자 \: 2021-06-25\n 위반내용 \: \○ 의약품 \‘다온정\’\<제5234호\>에 대하여 \‘해당 품목 광고업무정지 1개월\’(2021. 3. 19. ~ 2021. 4. 18.)의 행정처분을 받았으나, 업무정지기간에 해당 품목을 광고한 사실이 있음\n 처분사항 \: \○ 해당 품목 허가취소(2021. 7. 9.자) ';
                 url_link = 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push';
                 var reqBody = {
                     accountId: parsedBody.source.accountId,
