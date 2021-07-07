@@ -1,7 +1,7 @@
 var fs = require("fs")
 var https = require("https");
 var url_link = '';
-const request = require('../testapp/node_modules/request');
+const request = require('../../testapp/node_modules/request');
 
 const options = {
     url: 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/persistentmenu',
