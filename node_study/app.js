@@ -59,6 +59,7 @@ dbconn.readMasterTable().then(function(data) {
 
 let findCurrAct = function(text, actList){
     for ( let j of actList){
+        console.log(j.actType);
         if (text===j.actType){
             return j;
         }else { 
@@ -130,9 +131,10 @@ let onRequest = function(req, res) {
 
             //text message processing
             if (reqBody.content.postback === undefined) {
+                console.log(reqBody.content.text);
                 let reqAction = findCurrAct(reqBody.content.text, actionInstList);
                 let reqContent = findCurrCont(reqAction.nextContCode, contentInstList);
-                
+
                 reqBody.content.type = reqContent.contType;
                 reqBody.content.contentText = "메세지 응답 test";
                 reqBody.content.actions = makeActionJson(reqAction.contActionSet);
