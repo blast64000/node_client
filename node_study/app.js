@@ -57,6 +57,20 @@ dbconn.readMasterTable().then(function(data) {
 });
 
 
+let findCurrAct = function(text, actList){
+    for ( let j of actList){
+        if (text===j.actType){
+            return j;
+        }else { 
+            return null;
+        }
+    }
+
+};
+
+
+
+
 let findCurrCont = function(postback, conList) {
     for (let i of conList) {
         if (postback === i.contCode) {
@@ -110,15 +124,25 @@ let onRequest = function(req, res) {
                 },
             }
             console.log("postback:" + reqBody.content.postback);
+            // postback code system refactoriing
             // { ContentCode, content.type, instace_message } = postback 
 
-            if (reqBody.content.postback === undefined) {
-                let reqContent = findEnterCont()
 
+            //text message processing
+            if (reqBody.content.postback === undefined) {
+                let reqAction = findCurrAct(reqBody.content.text, actionInstList);
+                let reqContent = findCurrCont(reqAction.nextContCode, contentInstList);
+                
+                reqBody.content.type = reqContent.contType;
+                reqBody.content.contentText = "메세지 응답 test";
+                reqBody.content.actions = makeActionJson(reqAction.contActionSet);
+                
+                
+            //postback processing
             } else if (reqContent.content.text === undefined) {
                 let reqContent = findCurrCont(reqBody.content.postback, contentInstList);
                 reqBody.content.type = reqContent.contType;
-                reqBody.content.contentText = null;
+                reqBody.content.contentText = "postback 응답 test";
                 reqBody.content.actions = makeActionJson(reqContent.contActionSet);
                 //postback만 있을경우
             } else {
