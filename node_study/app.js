@@ -59,8 +59,8 @@ dbconn.readMasterTable().then(function(data) {
 
 let findCurrAct = function(text, actList){
     for ( let j of actList){
-        console.log(j.actType);
-        if (text===j.actType){
+        console.log(j.actName);
+        if (text===j.actName){
             return j;
         }else { 
             return null;
