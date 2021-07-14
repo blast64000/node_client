@@ -69,6 +69,7 @@ let findCurrAct = function(text, actList) {
 
 };
 
+
 let findCurrCont = function(postback, conList) {
     for (let i of conList) {
         if (postback === i.contCode) {
