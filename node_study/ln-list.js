@@ -30,8 +30,6 @@ let ActNode = class {
     }
     appendNextCont(contentList) {
         for (let i = 0; i < contentList.length; i++) {
-            console.log(this.nextContCode);
-            console.log(contentList[i].contCode);
             if (this.nextContCode === contentList[i].contCode) {
                 this.nextNode = contentList[i]
                 return 1;

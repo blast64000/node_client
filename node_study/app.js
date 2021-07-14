@@ -64,9 +64,10 @@ let findCurrAct = function(text, actList) {
             console.log(j);
             return j;
         } else {
-            return null;
+            continue;
         }
     }
+    return null;
 
 };
 
@@ -76,9 +77,11 @@ let findCurrCont = function(postback, conList) {
         if (postback === i.contCode) {
             return i;
         } else {
-            return null;
+            continue;
         }
     }
+
+    return null;
 
 };
 let makeActionJson = function(actionSetData) {
