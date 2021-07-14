@@ -57,20 +57,17 @@ dbconn.readMasterTable().then(function(data) {
 });
 
 
-let findCurrAct = function(text, actList){
-    for ( let j of actList){
+let findCurrAct = function(text, actList) {
+    for (let j of actList) {
         console.log(j.actName);
-        if (text===j.actName){
+        if (text === j.actName) {
             return j;
-        }else { 
+        } else {
             return null;
         }
     }
 
 };
-
-
-
 
 let findCurrCont = function(postback, conList) {
     for (let i of conList) {
@@ -137,10 +134,10 @@ let onRequest = function(req, res) {
 
                 reqBody.content.type = reqContent.contType;
                 reqBody.content.contentText = "메세지 응답 test";
-                reqBody.content.actions = makeActionJson(reqAction.contActionSet);
-                
-                
-            //postback processing
+                reqBody.content.actions = makeActionJson(reqContent.contActionSet);
+
+
+                //postback processing
             } else if (reqContent.content.text === undefined) {
                 let reqContent = findCurrCont(reqBody.content.postback, contentInstList);
                 reqBody.content.type = reqContent.contType;
