@@ -24,39 +24,6 @@ const pool = mariadb.createPool({
     connectionLimit: 5
 });
 
-dbconn.readMasterTable().then(function(data) {
-    masterData.chatBotList = data[0].slice(0, data[0].length);
-    masterData.contentList = data[1].slice(0, data[1].length);
-    masterData.actionList = data[2].slice(0, data[2].length);
-
-
-    console.log("1.====init ActionNode config ==== ");
-    for (let i of masterData.actionList) {
-        console.log(i);
-        actionInstList.push(new lklist.ActNode(i));
-    }
-
-    console.log("2.====init ContNode config ==== ");
-    for (let t = 0; t < masterData.contentList.length; t++) {
-        console.log(t);
-        contentInstList[t] = new lklist.ContNode(masterData.contentList[t]);
-        contentInstList[t].appendActionSet(actionInstList);
-    }
-
-    console.log("3.====init BotNode config ==== ");
-    for (let j = 0; j < masterData.chatBotList.length; j++) {
-        botInstList[j] = new lklist.BotNode(masterData.chatBotList[j]);
-
-        botInstList[j].appendEntryPoint(contentInstList);
-    }
-    console.log("4.====init Action NextNode config ==== ");
-    for (let x = 0; x < masterData.actionList.length; x++) {
-        actionInstList[x].appendNextCont(contentInstList);
-    }
-    console.log("5.====activate server config ==== ");
-    https.createServer(conf.options, onRequest).listen(443);
-    console.log('server has started.');
-});
 
 
 let findCurrAct = function(text, actList) {
@@ -152,8 +119,6 @@ let onRequest = function(req, res) {
             }
             //2. db write
 
-
-
             //3. on-request 
 
             request({
@@ -177,3 +142,37 @@ let onRequest = function(req, res) {
 
     });
 }
+
+dbconn.readMasterTable().then(function(data) {
+    masterData.chatBotList = data[0].slice(0, data[0].length);
+    masterData.contentList = data[1].slice(0, data[1].length);
+    masterData.actionList = data[2].slice(0, data[2].length);
+
+
+    console.log("1.====init ActionNode config ==== ");
+    for (let i of masterData.actionList) {
+        console.log(i);
+        actionInstList.push(new lklist.ActNode(i));
+    }
+
+    console.log("2.====init ContNode config ==== ");
+    for (let t = 0; t < masterData.contentList.length; t++) {
+        console.log(t);
+        contentInstList[t] = new lklist.ContNode(masterData.contentList[t]);
+        contentInstList[t].appendActionSet(actionInstList);
+    }
+
+    console.log("3.====init BotNode config ==== ");
+    for (let j = 0; j < masterData.chatBotList.length; j++) {
+        botInstList[j] = new lklist.BotNode(masterData.chatBotList[j]);
+
+        botInstList[j].appendEntryPoint(contentInstList);
+    }
+    console.log("4.====init Action NextNode config ==== ");
+    for (let x = 0; x < masterData.actionList.length; x++) {
+        actionInstList[x].appendNextCont(contentInstList);
+    }
+    console.log("5.====activate server config ==== ");
+    https.createServer(conf.options, onRequest).listen(443);
+    console.log('server has started.');
+});
