@@ -32,6 +32,7 @@ dbconn.readMasterTable().then(function(data) {
 
     console.log("1.====init ActionNode config ==== ");
     for (let i of masterData.actionList) {
+        console.log(i);
         actionInstList.push(new lklist.ActNode(i));
     }
 
@@ -131,9 +132,7 @@ let onRequest = function(req, res) {
 
             //text message processing
             if (reqBody.content.postback === undefined) {
-                console.log(reqBody.content.text);
                 let reqAction = findCurrAct(reqBody.content.text, actionInstList);
-                console.log(reqAction);
                 let reqContent = findCurrCont(reqAction.nextContCode, contentInstList);
 
                 reqBody.content.type = reqContent.contType;
