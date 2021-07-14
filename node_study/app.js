@@ -114,23 +114,22 @@ let onRequest = function(req, res) {
             //insert parse_text function
             let parsedBody = JSON.parse(body);
             let reqBody = {
-                accountId: parsedBody.source.accountId,
-                content: {
-                    type: parsedBody.content.type,
-                    text: parsedBody.content.text,
-                    postback: parsedBody.content.postback,
-                    actions: []
-                },
-            }
-            console.log("postback:" + reqBody.content.postback);
-            // postback code system refactoriing
-            // { ContentCode, content.type, instace_message } = postback 
-
+                    accountId: parsedBody.source.accountId,
+                    content: {
+                        type: parsedBody.content.type,
+                        text: parsedBody.content.text,
+                        postback: parsedBody.content.postback,
+                        actions: []
+                    },
+                }
+                // postback code system refactoriing
+                // { ContentCode, content.type, instace_message } = postback 
 
             //text message processing
             if (reqBody.content.postback === undefined) {
                 console.log(reqBody.content.text);
                 let reqAction = findCurrAct(reqBody.content.text, actionInstList);
+                console.log(reqAction.nextContCode);
                 let reqContent = findCurrCont(reqAction.nextContCode, contentInstList);
 
                 reqBody.content.type = reqContent.contType;
