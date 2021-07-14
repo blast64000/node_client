@@ -1,8 +1,7 @@
 var fs = require("fs")
 
 exports.options = {
-    url: 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/persistentmenu',
-    push_url: 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push',
+    url: 'https://apis.worksmobile.com/r/kr1unqNPDxwAo/message/v1/bot/1937543/message/push',
 
     headers: {
         'Content-Type': 'application/json; charset=utf-8',
