@@ -87,7 +87,7 @@ let makeActionJson = function(actionSetData) {
     let retArray = [];
     for (let i of actionSetData) {
         let actions = {
-            type: i.type,
+            type: i.actType,
             label: i.actName,
             postback: i.nextContCode
         };
