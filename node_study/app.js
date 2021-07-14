@@ -175,4 +175,5 @@ dbconn.readMasterTable().then(function(data) {
     console.log("5.====activate server config ==== ");
     https.createServer(conf.options, onRequest).listen(443);
     console.log('server has started.');
+    console.log(conf.options);
 });
