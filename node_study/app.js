@@ -60,9 +60,7 @@ dbconn.readMasterTable().then(function(data) {
 
 let findCurrAct = function(text, actList) {
     for (let j of actList) {
-        console.log(j.actName);
         if (text === j.actName) {
-            console.log(j);
             return j;
         } else {
             continue;
@@ -91,7 +89,7 @@ let makeActionJson = function(actionSetData) {
         let actions = {
             type: i.type,
             label: i.actName,
-            postback: i.netContCode
+            postback: i.nextContCode
         };
         retArray.push(actions);
     }
@@ -132,12 +130,13 @@ let onRequest = function(req, res) {
 
             //text message processing
             if (reqBody.content.postback === undefined) {
-                let reqAction = findCurrAct(reqBody.content.text, actionInstList);
-                let reqContent = findCurrCont(reqAction.nextContCode, contentInstList);
+                let reqContent = findCurrAct(reqBody.content.text, actionInstList);
+                reqContent = reqContent.nextNode;
 
                 reqBody.content.type = reqContent.contType;
                 reqBody.content.contentText = "메세지 응답 test";
                 reqBody.content.actions = makeActionJson(reqContent.contActionSet);
+                console.log(reqBody.content.actions);
 
 
                 //postback processing
