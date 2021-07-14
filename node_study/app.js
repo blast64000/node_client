@@ -61,6 +61,7 @@ let findCurrAct = function(text, actList) {
     for (let j of actList) {
         console.log(j.actName);
         if (text === j.actName) {
+            console.log(j);
             return j;
         } else {
             return null;
@@ -129,7 +130,7 @@ let onRequest = function(req, res) {
             if (reqBody.content.postback === undefined) {
                 console.log(reqBody.content.text);
                 let reqAction = findCurrAct(reqBody.content.text, actionInstList);
-                console.log(reqAction.nextContCode);
+                console.log(reqAction);
                 let reqContent = findCurrCont(reqAction.nextContCode, contentInstList);
 
                 reqBody.content.type = reqContent.contType;
