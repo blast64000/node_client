@@ -99,6 +99,9 @@ let onRequest = function(req, res) {
             //text message processing
             if (reqBody.content.postback === undefined) {
                 let reqContent = findCurrAct(reqBody.content.text, actionInstList);
+                if (reqContent == null) {
+                    //★ error handle
+                }
                 reqContent = reqContent.nextNode;
 
                 reqBody.content.type = reqContent.contType;
@@ -113,9 +116,9 @@ let onRequest = function(req, res) {
                 reqBody.content.type = reqContent.contType;
                 reqBody.content.contentText = "postback 응답 test";
                 reqBody.content.actions = makeActionJson(reqContent.contActionSet);
-                //postback만 있을경우
-            } else {
 
+            } else {
+                console.log("postback && content.text = 1")
             }
             //2. db write
 
