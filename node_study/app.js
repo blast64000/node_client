@@ -105,7 +105,6 @@ let onRequest = function(req, res) {
                 reqContent = reqContent.nextNode;
 
                 reqBody.content.type = reqContent.contType;
-                reqBody.content.contentText = "메세지 응답 test";
                 reqBody.content.actions = makeActionJson(reqContent.contActionSet);
                 console.log(reqBody.content.actions);
 
@@ -114,7 +113,6 @@ let onRequest = function(req, res) {
             } else if (reqContent.content.text === undefined) {
                 let reqContent = findCurrCont(reqBody.content.postback, contentInstList);
                 reqBody.content.type = reqContent.contType;
-                reqBody.content.contentText = "postback 응답 test";
                 reqBody.content.actions = makeActionJson(reqContent.contActionSet);
 
             } else {
