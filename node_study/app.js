@@ -72,6 +72,8 @@ let onRequest = function(req, res) {
     console.log(method);
     console.log(url);
 
+    console.log('ip'+req.connection.remoteAddress);
+
     //data read part
     req.on('error', (err) => {
         console.error(err);
