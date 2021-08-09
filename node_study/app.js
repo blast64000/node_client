@@ -68,7 +68,7 @@ let onRequest = function(req, res) {
     /* request part*/
     const { headers, method, url } = req;
     let body = [];
-
+    console.log(headers);
     //data read part
     req.on('error', (err) => {
         console.error(err);
@@ -177,6 +177,7 @@ dbconn.readMasterTable().then(function(data) {
     }
     console.log("5.====activate server config ==== ");
     https.createServer(conf.options, onRequest).listen(443);
+    
     console.log('server has started.');
     console.log(conf.options);
 });
