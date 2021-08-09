@@ -69,6 +69,9 @@ let onRequest = function(req, res) {
     const { headers, method, url } = req;
     let body = [];
     console.log(headers);
+    console.log(method);
+    console.log(url);
+
     //data read part
     req.on('error', (err) => {
         console.error(err);
